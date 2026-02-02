@@ -1,0 +1,66 @@
+[
+    {
+        "id": "velo",
+        "url": "https://i.imgur.com/DsMMmci.jpeg",
+        "lieu": "Nantes",
+        "iso": "ISO 6400",
+        "focale": "27mm",
+        "description": "Composition dynamique et saturée, un vélo électrique customisé."
+    },
+    {
+        "id": "pantin",
+        "url": "https://i.imgur.com/KZBmKTa.jpeg",
+        "lieu": "Atelier",
+        "iso": "ISO 6400",
+        "focale": "157mm",
+        "description": "En lumière naturelle douce, un petit pantin articulé en bois."
+    },
+    {
+        "id": "femme",
+        "url": "https://i.imgur.com/gepkOBg.jpeg",
+        "lieu": "Place Royale",
+        "iso": "ISO 200",
+        "focale": "156mm",
+        "description": "La silhouette frêle d’une femme âgée dominant la fontaine."
+    },
+    {
+        "id": "semelle",
+        "url": "https://i.imgur.com/jLwJf2V.jpeg",
+        "lieu": "Glace",
+        "iso": "ISO 100",
+        "focale": "27mm",
+        "description": "Plan serré sur une neige piétinée. Une semelle de chaussure isolée."
+    },
+    {
+        "id": "chocolaterie",
+        "url": "https://i.imgur.com/2hbnTJ5.jpeg",
+        "lieu": "Rue de Nantes",
+        "iso": "ISO 100",
+        "focale": "27mm",
+        "description": "Un store rouge vif et une vitrine illuminée dominent la rue."
+    },
+    {
+        "id": "mains",
+        "url": "https://i.imgur.com/e24W0q6.jpeg",
+        "lieu": "Soirée",
+        "iso": "ISO 6400",
+        "focale": "157mm",
+        "description": "Deux mains enfantines encadrent un personnage sculpté dans du pain."
+    },
+    {
+        "id": "chemin",
+        "url": "https://i.imgur.com/4WeEEtI.jpeg",
+        "lieu": "Gare SNCF",
+        "iso": "ISO 6400",
+        "focale": "27mm",
+        "description": "Un chemin enneigé serpente entre arbres et réverbères."
+    },
+    {
+        "id": "silhouette",
+        "url": "https://i.imgur.com/mLBTNWJ.jpeg",
+        "lieu": "Allée Tungstène",
+        "iso": "ISO 6400",
+        "focale": "157mm",
+        "description": "Dans un couloir baigné d’une lumière orangée, une silhouette s'éloigne."
+    }
+]
