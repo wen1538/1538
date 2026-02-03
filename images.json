@@ -5,7 +5,8 @@
         "lieu": "Nantes",
         "iso": "ISO 6400",
         "focale": "27mm",
-        "description": "Composition dynamique et saturée, un vélo électrique customisé."
+        "ouverture": "f/4",
+        "description": "Composition dynamique et saturée, un vélo électrique customisé aux roues multicolores et au cadre orné de stickers occupe le premier plan d’une rue piétonne animée. Ses couleurs vives contrastent avec les tables de café et le chien en arrière-plan ; il symbolise la liberté créative et l’énergie joyeuse de la vie urbaine."
     },
     {
         "id": "pantin",
@@ -13,7 +14,8 @@
         "lieu": "Atelier",
         "iso": "ISO 6400",
         "focale": "157mm",
-        "description": "En lumière naturelle douce, un petit pantin articulé en bois."
+        "ouverture": "f/4",
+        "description": "En lumière naturelle douce, un petit pantin articulé en bois repose immobile sur un tapis persan richement orné. Sa posture abandonnée, les couleurs vives des perles et le contraste avec le parquet usé évoquent la nostalgie d’une enfance révolue, un jouet qui attend patiemment un retour."
     },
     {
         "id": "femme",
@@ -21,7 +23,8 @@
         "lieu": "Place Royale",
         "iso": "ISO 200",
         "focale": "156mm",
-        "description": "La silhouette frêle d’une femme âgée dominant la fontaine."
+        "ouverture": "f/4",
+        "description": "En noir et blanc à fort contraste, la silhouette frêle d’une femme âgée domine la composition. Assise sur les marches de pierre d’une fontaine, mains jointes, chapeau et manteau à franges, elle semble veiller sur le temps qui s’écoule avec l’eau ruisselante. Derrière elle, les passants flous rappellent la vie qui continue ; elle incarne la dignité tranquille d’un instant suspendu."
     },
     {
         "id": "semelle",
@@ -29,7 +32,8 @@
         "lieu": "Glace",
         "iso": "ISO 100",
         "focale": "27mm",
-        "description": "Plan serré sur une neige piétinée. Une semelle de chaussure isolée."
+        "ouverture": "f/7.1",
+        "description": "Plan serré sur une neige piétinée couverte d’empreintes. Au centre, une semelle de chaussure isolée repose comme un vestige. Les traces multiples et ce fragment solitaire créent une composition minimaliste puissante ; elle parle d’absence, de passage éphémère et des chemins laissés derrière soi."
     },
     {
         "id": "chocolaterie",
@@ -37,7 +41,8 @@
         "lieu": "Rue de Nantes",
         "iso": "ISO 100",
         "focale": "27mm",
-        "description": "Un store rouge vif et une vitrine illuminée dominent la rue."
+        "ouverture": "f/4.5",
+        "description": "Vue en contre-plongée, un store rouge vif et une vitrine illuminée dominent la rue. Les lettres lumineuses et les reflets chauds créent un appel visuel irrésistible. Cette devanture de chocolaterie offre un îlot de chaleur et de tentation au milieu d’une journée grise, rappelant le réconfort simple des petits plaisirs."
     },
     {
         "id": "mains",
@@ -45,7 +50,8 @@
         "lieu": "Soirée",
         "iso": "ISO 6400",
         "focale": "157mm",
-        "description": "Deux mains enfantines encadrent un personnage sculpté dans du pain."
+        "ouverture": "f/4",
+        "description": "En lumière douce avec une faible profondeur de champ, deux mains enfantines encadrent un petit personnage sculpté dans du pain ou du bois, au visage comique et expressif. Ce geste tendre au milieu d’un mur couvert de graffitis et d’autocollants transforme un objet humble en trésor d’imagination et d’innocence préservée."
     },
     {
         "id": "chemin",
@@ -53,7 +59,8 @@
         "lieu": "Gare SNCF",
         "iso": "ISO 6400",
         "focale": "27mm",
-        "description": "Un chemin enneigé serpente entre arbres et réverbères."
+        "ouverture": "f/4",
+        "description": "Scène nocturne sous éclairage au sodium chaud, un chemin enneigé serpente entre arbres dénudés et réverbères. Le contraste entre la neige immaculée et les ombres profondes crée des lignes directrices puissantes ; ce sentier solitaire évoque le chemin intérieur, la marche silencieuse vers l’inconnu."
     },
     {
         "id": "silhouette",
@@ -61,6 +68,7 @@
         "lieu": "Allée Tungstène",
         "iso": "ISO 6400",
         "focale": "157mm",
-        "description": "Dans un couloir baigné d’une lumière orangée, une silhouette s'éloigne."
+        "ouverture": "f/4",
+        "description": "Dans un couloir étroit baigné d’une lumière orangée intense, les lignes de perspective guident le regard vers une silhouette floue qui s’éloigne. Le bokeh et la lueur chaude donnent une atmosphère onirique ; cette image capture le sentiment poétique d’un départ, d’un passage vers l’ailleurs."
     }
 ]

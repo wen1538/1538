@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>.1538 | Portfolio</title>
     <link rel="icon" type="image/png" href="wen..png">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Italianno&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #000; --text: #f4f4f4; --neon: rgba(255, 255, 255, 0.4); }
+        :root { --bg: #000; --text: #f4f4f4; --neon: rgba(255, 255, 255, 0.4); --accent-blue: #4da6ff; --accent-red: #ff4d4d; }
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
 
         html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
         body { background: var(--bg); color: var(--text); font-family: 'Playfair Display', serif; overflow-x: hidden; }
 
-        /* Curseur X Néon Minimaliste */
+        /* Curseur X Néon */
         .cursor-x {
             position: fixed; width: 14px; height: 14px; pointer-events: none; z-index: 100000;
             transform: translate(-50%, -50%); mix-blend-mode: difference;
@@ -27,181 +26,176 @@
         .cursor-x::after { transform: rotate(-45deg); }
         .cursor-x.active { transform: translate(-50%, -50%) scale(1.8) rotate(90deg); transition: transform 0.25s; }
 
-        .film-grain { 
-            position: fixed; inset: 0; 
-            background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Overlay.png"); 
-            opacity: 0.03; pointer-events: none; z-index: 99999; 
-        }
+        .film-grain { position: fixed; inset: 0; background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Overlay.png"); opacity: 0.04; pointer-events: none; z-index: 9999; }
 
-        /* Interface Header */
+        /* Ghost UI & Header */
+        .auto-hide { transition: opacity 0.8s ease; opacity: 1; }
+        body.idle .auto-hide { opacity: 0; pointer-events: none; }
+
         .instagram-link-container { position: fixed; top: 30px; left: 40px; z-index: 1000; }
-        .logo-img { height: 50px; width: auto; }
+        .logo-signature { font-family: 'Italianno', cursive; font-size: 3rem; color: #fff; text-decoration: none; }
+
+        /* Galerie */
+        .photo-item { width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; scroll-snap-align: start; }
+        .img-wrapper { width: 85vw; max-width: 1000px; height: 70vh; overflow: hidden; background: #050505; }
+        .photo-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: blur(20px); transition: 1.8s cubic-bezier(0.19, 1, 0.22, 1); }
+        .photo-item img.loaded { opacity: 0.8; filter: blur(0); }
+        .photo-item:hover img { opacity: 1; transform: scale(1.02); }
+
+        .exif-permanent { display: flex; gap: 2.5rem; padding-top: 3vh; font-size: 10px; letter-spacing: 4px; color: rgba(255,255,255,0.2); text-transform: uppercase; }
+
+        /* Viewer */
+        .viewer { position: fixed; inset: 0; background: #000; z-index: 10000; display: none; opacity: 0; transition: 0.5s; align-items: center; justify-content: center; }
+        .viewer.show { display: flex; opacity: 1; }
+        .viewer-top-right { position: absolute; top: 30px; right: 40px; display: flex; gap: 30px; z-index: 10200; }
+        .control { background: none; border: none; }
         .icon-custom { width: 35px; filter: invert(1); opacity: 0.6; transition: 0.3s; }
         .control:hover .icon-custom { opacity: 1; filter: drop-shadow(0 0 5px #fff); }
 
-        /* Galerie & Photos */
-        .photo-item { width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; scroll-snap-align: start; }
-        .img-wrapper { width: 80vw; max-width: 900px; height: 65vh; overflow: hidden; background: #050505; }
-        .photo-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: blur(20px); transition: 1.5s ease-out; }
-        .photo-item img.loaded { opacity: 0.75; filter: blur(0); }
-        .exif-permanent { display: flex; gap: 2rem; padding-top: 20px; font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.2); text-transform: uppercase; }
+        .viewer-image { max-width: 90%; max-height: 85%; object-fit: contain; }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 3rem; opacity: 0.2; transition: 0.3s; z-index: 10100; padding: 20px; }
+        .nav-arrow:hover { opacity: 1; }
+        .left { left: 20px; } .right { right: 20px; }
 
-        /* Auto-Hide UI */
-        .auto-hide { transition: opacity 0.8s ease; }
-        body.idle .auto-hide { opacity: 0; pointer-events: none; }
-
-        /* Viewer Mode */
-        .viewer { position: fixed; inset: 0; background: #000; z-index: 10000; opacity: 0; transition: 0.4s; align-items: center; justify-content: center; display: none; }
-        .viewer.show { opacity: 1; display: flex; }
-        .viewer-top-right { position: absolute; top: 30px; right: 40px; display: flex; gap: 20px; z-index: 10200; }
-        .control { background: none; border: none; }
-        .viewer-image { max-width: 90%; max-height: 80%; object-fit: contain; }
-        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 2.5rem; opacity: 0.2; z-index: 10100; padding: 20px; }
-        
-        .viewer-description { 
-            position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); 
-            width: 85%; max-width: 500px; padding: 25px; background: rgba(5,5,5,0.95); 
-            backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.05); 
-            display: none; z-index: 10300; color: #999; text-align: center; font-style: italic; 
-        }
+        .viewer-description { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 600px; padding: 30px; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); display: none; z-index: 10300; }
         .viewer-description.show { display: block; }
+        .desc-text { font-size: 1.05rem; line-height: 1.7; color: #bbb; text-align: center; font-style: italic; }
+        #desc-close { position: absolute; top: 10px; right: 15px; background: none; border: none; color: var(--accent-red); font-size: 1.2rem; }
 
-        /* Mentions Légales */
-        .site-footer { padding: 40px 0; display: flex; flex-direction: column; align-items: center; }
-        .footer-line { width: 60px; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 15px; }
-        .footer-links { font-size: 8px; letter-spacing: 2px; color: rgba(255,255,255,0.15); }
+        /* Footer */
+        .site-footer { padding: 100px 0 50px; display: flex; flex-direction: column; align-items: center; }
+        .footer-line { width: 120px; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 25px; }
+        .footer-links { font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.2); text-transform: uppercase; display: flex; gap: 40px; }
         #legal-btn { background: none; border: none; color: inherit; text-decoration: underline; }
-        .legal-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 20000; display: none; align-items: center; justify-content: center; }
-        .legal-content { background: #111; padding: 40px; border: 1px solid #222; text-align: center; }
+
+        .legal-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 20000; display: none; align-items: center; justify-content: center; }
+        .legal-content { background: #111; padding: 40px; text-align: center; border: 1px solid #222; max-width: 400px; }
+        #close-legal { margin-top: 20px; padding: 10px 20px; background: #333; color: #fff; border: none; }
     </style>
 </head>
-<body class="ghost-ui">
+<body>
 
-    <div class="film-grain"></div>
-    <div class="cursor-x" id="cursor-x"></div>
+<div class="film-grain"></div>
+<div class="cursor-x" id="cursor-x"></div>
 
-    <header class="instagram-link-container auto-hide">
-        <a href="https://www.instagram.com/wbcht/" target="_blank">
-            <img src=".1538.png" alt=".1538" class="logo-img">
-        </a>
-    </header>
+<header class="instagram-link-container auto-hide">
+    <a href="https://www.instagram.com/wbcht/" target="_blank" class="logo-signature">.1538</a>
+</header>
 
-    <main class="gallery-container" id="gallery"></main>
+<main class="gallery-container" id="gallery"></main>
 
-    <div class="viewer" id="viewer">
-        <button class="nav-arrow left auto-hide" id="prev-btn">&lt;</button>
-        <button class="nav-arrow right auto-hide" id="next-btn">&gt;</button>
-        
-        <div class="viewer-top-right auto-hide">
-            <button class="control info" id="info-trigger"><img src="obj.png" alt="Info" class="icon-custom"></button>
-            <button class="control exit" id="close-viewer"><img src="boit.png" alt="Fermer" class="icon-custom"></button>
-        </div>
+<div class="viewer" id="viewer">
+    <button class="nav-arrow left auto-hide" id="prev-btn">&lt;</button>
+    <button class="nav-arrow right auto-hide" id="next-btn">&gt;</button>
 
-        <div class="viewer-content">
-            <img class="viewer-image" id="main-viewer-img" src="">
-        </div>
-
-        <div class="viewer-description" id="viewer-description">
-            <div id="desc-content"></div>
-        </div>
+    <div class="viewer-top-right auto-hide">
+        <button class="control info" id="info-trigger"><img src="obj.png" alt="Info" class="icon-custom"></button>
+        <button class="control exit" id="close-viewer"><img src="boit.png" alt="Close" class="icon-custom"></button>
     </div>
-
-    <footer class="site-footer auto-hide">
-        <div class="footer-line"></div>
-        <div class="footer-links">
-            <span>© 2026 .1538</span>
-            <button id="legal-btn">Mentions Légales</button>
-        </div>
-    </footer>
-
-    <div class="legal-modal" id="legal-modal">
-        <div class="legal-content">
-            <h3>Mentions Légales</h3>
-            <p>Photographies originales par .1538. Tous droits réservés.</p><br>
-            <button id="close-legal" style="padding: 10px 20px; cursor: pointer; background: #222; color: #fff; border:none;">Fermer</button>
-        </div>
+    
+    <div class="viewer-content"><img class="viewer-image" id="v-img" src=""></div>
+    
+    <div class="viewer-description" id="viewer-description">
+        <button id="desc-close">×</button>
+        <div id="desc-content"></div>
     </div>
+</div>
 
-    <script>
-        // DONNÉES GÉNÉRÉES DYNAMIQUEMENT
-        async function initGallery() {
-            const gallery = document.getElementById('gallery');
-            const viewer = document.getElementById('viewer');
-            const viewerImg = document.getElementById('main-viewer-img');
-            const viewerDesc = document.getElementById('viewer-description');
-            const descContent = document.getElementById('desc-content');
-            const cursor = document.getElementById('cursor-x');
-            
-            let imagesData = [];
-            let currentIndex = 0;
-            let idleTimer;
+<footer class="site-footer auto-hide">
+    <div class="footer-line"></div>
+    <div class="footer-links">
+        <span>© 2026 .1538</span>
+        <button id="legal-btn">Mentions Légales</button>
+    </div>
+</footer>
 
-            try {
-                const response = await fetch('./images.json');
-                imagesData = await response.json();
+<div class="legal-modal" id="legal-modal">
+    <div class="legal-content">
+        <h3>Mentions Légales</h3><br>
+        <p>Photographies originales par .1538. Tous droits réservés.</p>
+        <button id="close-legal">Fermer</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const gallery = document.getElementById('gallery');
+        const viewer = document.getElementById('viewer');
+        const vImg = document.getElementById('v-img');
+        const vDesc = document.getElementById('viewer-description');
+        const dContent = document.getElementById('desc-content');
+        const cursor = document.getElementById('cursor-x');
+        let imagesData = [];
+        let currentIndex = 0;
+        let idleTimer;
+
+        // 1. Chargement des données
+        try {
+            const res = await fetch('./images.json');
+            imagesData = await res.json();
+            gallery.innerHTML = imagesData.map((img, i) => `
+                <article class="photo-item" data-index="${i}">
+                    <div class="img-wrapper"><img src="${img.url}" alt="${img.id}"></div>
+                    <div class="exif-permanent">
+                        <span>${img.lieu}</span><span>${img.iso}</span><span>${img.focale}</span><span>${img.ouverture}</span>
+                    </div>
+                </article>
+            `).join('');
+            setupInteractions();
+        } catch (e) { console.error("Data error", e); }
+
+        // 2. Curseur X & Ghost UI
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            document.body.classList.remove('idle');
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(() => document.body.classList.add('idle'), 3000);
+        });
+
+        function setupInteractions() {
+            document.querySelectorAll('.photo-item').forEach(item => {
+                item.onclick = () => openViewer(parseInt(item.dataset.index));
+                item.onmouseenter = () => cursor.classList.add('active');
+                item.onmouseleave = () => cursor.classList.remove('active');
                 
-                gallery.innerHTML = imagesData.map((img, i) => `
-                    <article class="photo-item" data-index="${i}">
-                        <div class="img-wrapper"><img src="${img.url}" alt="${img.id}"></div>
-                        <div class="exif-permanent"><span>${img.lieu}</span><span>${img.iso}</span><span>${img.focale}</span></div>
-                    </article>
-                `).join('');
-
-                setupListeners();
-            } catch (e) { console.error("Data error:", e); }
-
-            function setupListeners() {
-                // Curseur
-                document.addEventListener('mousemove', e => {
-                    cursor.style.left = `${e.clientX}px`;
-                    cursor.style.top = `${e.clientY}px`;
-                    document.body.classList.remove('idle');
-                    clearTimeout(idleTimer);
-                    idleTimer = setTimeout(() => document.body.classList.add('idle'), 3000);
-                });
-
-                // Ouverture Photo
-                document.querySelectorAll('.photo-item').forEach(item => {
-                    item.onclick = () => {
-                        currentIndex = parseInt(item.dataset.index);
-                        const d = imagesData[currentIndex];
-                        viewerImg.src = d.url;
-                        descContent.innerHTML = `<p>${d.description}</p>`;
-                        viewer.classList.add('show');
-                        document.body.style.overflow = 'hidden';
-                    };
-                    item.onmouseenter = () => cursor.classList.add('active');
-                    item.onmouseleave = () => cursor.classList.remove('active');
-                    
-                    new IntersectionObserver(entries => {
-                        entries.forEach(en => { if(en.isIntersecting) en.target.querySelector('img').classList.add('loaded'); });
-                    }, {threshold: 0.1}).observe(item);
-                });
-
-                // Fermeture & Nav
-                document.getElementById('close-viewer').onclick = () => {
-                    viewer.classList.remove('show');
-                    viewerDesc.classList.remove('show');
-                    document.body.style.overflow = '';
-                };
-                document.getElementById('next-btn').onclick = (e) => { 
-                    e.stopPropagation(); 
-                    currentIndex = (currentIndex + 1) % imagesData.length;
-                    viewerImg.src = imagesData[currentIndex].url;
-                    descContent.innerHTML = `<p>${imagesData[currentIndex].description}</p>`;
-                };
-                document.getElementById('prev-btn').onclick = (e) => { 
-                    e.stopPropagation(); 
-                    currentIndex = (currentIndex - 1 + imagesData.length) % imagesData.length;
-                    viewerImg.src = imagesData[currentIndex].url;
-                    descContent.innerHTML = `<p>${imagesData[currentIndex].description}</p>`;
-                };
-                document.getElementById('info-trigger').onclick = (e) => { e.stopPropagation(); viewerDesc.classList.toggle('show'); };
-                document.getElementById('legal-btn').onclick = () => document.getElementById('legal-modal').style.display = 'flex';
-                document.getElementById('close-legal').onclick = () => document.getElementById('legal-modal').style.display = 'none';
-            }
+                new IntersectionObserver(entries => {
+                    entries.forEach(en => { if(en.isIntersecting) en.target.querySelector('img').classList.add('loaded'); });
+                }, {threshold: 0.5}).observe(item);
+            });
         }
-        initGallery();
-    </script>
+
+        function openViewer(i) {
+            currentIndex = i;
+            vImg.src = imagesData[currentIndex].url;
+            dContent.innerHTML = `<p class="desc-text">${imagesData[currentIndex].description}</p>`;
+            viewer.style.display = 'flex';
+            setTimeout(() => viewer.classList.add('show'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        const hide = () => {
+            viewer.classList.remove('show');
+            setTimeout(() => viewer.style.display = 'none', 500);
+            vDesc.classList.remove('show');
+            document.body.style.overflow = '';
+        };
+
+        document.getElementById('close-viewer').onclick = hide;
+        document.getElementById('next-btn').onclick = e => { e.stopPropagation(); openViewer((currentIndex + 1) % imagesData.length); };
+        document.getElementById('prev-btn').onclick = e => { e.stopPropagation(); openViewer((currentIndex - 1 + imagesData.length) % imagesData.length); };
+        document.getElementById('info-trigger').onclick = e => { e.stopPropagation(); vDesc.classList.toggle('show'); };
+        document.getElementById('desc-close').onclick = () => vDesc.classList.remove('show');
+        document.getElementById('legal-btn').onclick = () => document.getElementById('legal-modal').style.display = 'flex';
+        document.getElementById('close-legal').onclick = () => document.getElementById('legal-modal').style.display = 'none';
+
+        document.addEventListener('keydown', e => {
+            if (!viewer.classList.contains('show')) return;
+            if (e.key === "Escape") hide();
+            if (e.key === "ArrowRight") openViewer((currentIndex + 1) % imagesData.length);
+            if (e.key === "ArrowLeft") openViewer((currentIndex - 1 + imagesData.length) % imagesData.length);
+        });
+    });
+</script>
 </body>
 </html>
