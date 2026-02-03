@@ -9,7 +9,6 @@
     <style>
         :root { --bg: #000; --text: #f4f4f4; --neon: rgba(255, 255, 255, 0.4); --accent-blue: #4da6ff; --accent-red: #ff4d4d; }
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
-
         html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
         body { background: var(--bg); color: var(--text); font-family: 'Playfair Display', serif; overflow-x: hidden; }
 
@@ -28,11 +27,11 @@
 
         .film-grain { position: fixed; inset: 0; background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Overlay.png"); opacity: 0.04; pointer-events: none; z-index: 9999; }
 
-        /* Ghost UI & Header */
+        /* Ghost UI (Auto-hide) */
         .auto-hide { transition: opacity 0.8s ease; opacity: 1; }
         body.idle .auto-hide { opacity: 0; pointer-events: none; }
 
-        .instagram-link-container { position: fixed; top: 30px; left: 40px; z-index: 1000; }
+        .header-logo { position: fixed; top: 30px; left: 40px; z-index: 1000; }
         .logo-signature { font-family: 'Italianno', cursive; font-size: 3rem; color: #fff; text-decoration: none; }
 
         /* Galerie */
@@ -42,7 +41,8 @@
         .photo-item img.loaded { opacity: 0.8; filter: blur(0); }
         .photo-item:hover img { opacity: 1; transform: scale(1.02); }
 
-        .exif-permanent { display: flex; gap: 2.5rem; padding-top: 3vh; font-size: 10px; letter-spacing: 4px; color: rgba(255,255,255,0.2); text-transform: uppercase; }
+        .exif-bar { display: flex; gap: 2rem; padding-top: 3vh; font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.2); text-transform: uppercase; align-items: center; }
+        .exif-titre { color: rgba(255,255,255,0.6); font-weight: bold; font-size: 11px; }
 
         /* Viewer */
         .viewer { position: fixed; inset: 0; background: #000; z-index: 10000; display: none; opacity: 0; transition: 0.5s; align-items: center; justify-content: center; }
@@ -50,11 +50,8 @@
         .viewer-top-right { position: absolute; top: 30px; right: 40px; display: flex; gap: 30px; z-index: 10200; }
         .control { background: none; border: none; }
         .icon-custom { width: 35px; filter: invert(1); opacity: 0.6; transition: 0.3s; }
-        .control:hover .icon-custom { opacity: 1; filter: drop-shadow(0 0 5px #fff); }
-
         .viewer-image { max-width: 90%; max-height: 85%; object-fit: contain; }
-        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 3rem; opacity: 0.2; transition: 0.3s; z-index: 10100; padding: 20px; }
-        .nav-arrow:hover { opacity: 1; }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 3rem; opacity: 0.2; z-index: 10100; padding: 20px; }
         .left { left: 20px; } .right { right: 20px; }
 
         .viewer-description { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 600px; padding: 30px; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); display: none; z-index: 10300; }
@@ -63,139 +60,137 @@
         #desc-close { position: absolute; top: 10px; right: 15px; background: none; border: none; color: var(--accent-red); font-size: 1.2rem; }
 
         /* Footer */
-        .site-footer { padding: 100px 0 50px; display: flex; flex-direction: column; align-items: center; }
-        .footer-line { width: 120px; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 25px; }
+        .site-footer { padding: 80px 0 40px; display: flex; flex-direction: column; align-items: center; }
+        .footer-line { width: 100px; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 20px; }
         .footer-links { font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.2); text-transform: uppercase; display: flex; gap: 40px; }
         #legal-btn { background: none; border: none; color: inherit; text-decoration: underline; }
 
-        .legal-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 20000; display: none; align-items: center; justify-content: center; }
-        .legal-content { background: #111; padding: 40px; text-align: center; border: 1px solid #222; max-width: 400px; }
-        #close-legal { margin-top: 20px; padding: 10px 20px; background: #333; color: #fff; border: none; }
+        .legal-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 20000; display: none; align-items: center; justify-content: center; }
+        .legal-content { background: #111; padding: 40px; text-align: center; border: 1px solid #222; }
+        #close-legal { margin-top: 20px; padding: 8px 20px; background: #333; color: #fff; border: none; }
     </style>
 </head>
 <body>
 
-<div class="film-grain"></div>
-<div class="cursor-x" id="cursor-x"></div>
+    <div class="film-grain"></div>
+    <div class="cursor-x" id="cursor-x"></div>
 
-<header class="instagram-link-container auto-hide">
-    <a href="https://www.instagram.com/wbcht/" target="_blank" class="logo-signature">.1538</a>
-</header>
+    <header class="header-logo auto-hide">
+        <a href="https://www.instagram.com/wbcht/" target="_blank" class="logo-signature">.1538</a>
+    </header>
 
-<main class="gallery-container" id="gallery"></main>
+    <main class="gallery-container" id="gallery"></main>
 
-<div class="viewer" id="viewer">
-    <button class="nav-arrow left auto-hide" id="prev-btn">&lt;</button>
-    <button class="nav-arrow right auto-hide" id="next-btn">&gt;</button>
-
-    <div class="viewer-top-right auto-hide">
-        <button class="control info" id="info-trigger"><img src="obj.png" alt="Info" class="icon-custom"></button>
-        <button class="control exit" id="close-viewer"><img src="boit.png" alt="Close" class="icon-custom"></button>
+    <div class="viewer" id="viewer">
+        <button class="nav-arrow left auto-hide" id="prev-btn">&lt;</button>
+        <button class="nav-arrow right auto-hide" id="next-btn">&gt;</button>
+        <div class="viewer-top-right auto-hide">
+            <button class="control info" id="info-trigger"><img src="obj.png" alt="Info" class="icon-custom"></button>
+            <button class="control exit" id="close-viewer"><img src="boit.png" alt="X" class="icon-custom"></button>
+        </div>
+        <div class="viewer-content"><img class="viewer-image" id="v-img" src=""></div>
+        <div class="viewer-description" id="viewer-description">
+            <button id="desc-close">×</button>
+            <div id="desc-content"></div>
+        </div>
     </div>
-    
-    <div class="viewer-content"><img class="viewer-image" id="v-img" src=""></div>
-    
-    <div class="viewer-description" id="viewer-description">
-        <button id="desc-close">×</button>
-        <div id="desc-content"></div>
+
+    <footer class="site-footer auto-hide">
+        <div class="footer-line"></div>
+        <div class="footer-links">
+            <span>© 2026 .1538</span>
+            <button id="legal-btn">Mentions Légales</button>
+        </div>
+    </footer>
+
+    <div class="legal-modal" id="legal-modal">
+        <div class="legal-content">
+            <h3>Mentions Légales</h3><br>
+            <p>Photographies originales par .1538. Tous droits réservés.</p>
+            <button id="close-legal">Fermer</button>
+        </div>
     </div>
-</div>
 
-<footer class="site-footer auto-hide">
-    <div class="footer-line"></div>
-    <div class="footer-links">
-        <span>© 2026 .1538</span>
-        <button id="legal-btn">Mentions Légales</button>
-    </div>
-</footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const gallery = document.getElementById('gallery');
+            const viewer = document.getElementById('viewer');
+            const vImg = document.getElementById('v-img');
+            const vDesc = document.getElementById('viewer-description');
+            const dContent = document.getElementById('desc-content');
+            const cursor = document.getElementById('cursor-x');
+            let imagesData = [];
+            let currentIndex = 0;
+            let idleTimer;
 
-<div class="legal-modal" id="legal-modal">
-    <div class="legal-content">
-        <h3>Mentions Légales</h3><br>
-        <p>Photographies originales par .1538. Tous droits réservés.</p>
-        <button id="close-legal">Fermer</button>
-    </div>
-</div>
+            // Chargement Data
+            try {
+                const res = await fetch('./images.json');
+                imagesData = await res.json();
+                gallery.innerHTML = imagesData.map((img, i) => `
+                    <article class="photo-item" data-index="${i}">
+                        <div class="img-wrapper"><img src="${img.url}" alt="${img.id}"></div>
+                        <div class="exif-bar">
+                            <span class="exif-titre">${img.titre}</span>
+                            <span>${img.lieu}</span><span>${img.iso}</span><span>${img.focale}</span><span>${img.ouverture}</span>
+                        </div>
+                    </article>
+                `).join('');
+                setupUI();
+            } catch (e) { console.error("Error loading JSON", e); }
 
-<script>
-    document.addEventListener('DOMContentLoaded', async () => {
-        const gallery = document.getElementById('gallery');
-        const viewer = document.getElementById('viewer');
-        const vImg = document.getElementById('v-img');
-        const vDesc = document.getElementById('viewer-description');
-        const dContent = document.getElementById('desc-content');
-        const cursor = document.getElementById('cursor-x');
-        let imagesData = [];
-        let currentIndex = 0;
-        let idleTimer;
+            function setupUI() {
+                // Curseur & Inactivité
+                document.addEventListener('mousemove', e => {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                    document.body.classList.remove('idle');
+                    clearTimeout(idleTimer);
+                    idleTimer = setTimeout(() => document.body.classList.add('idle'), 3000);
+                });
 
-        // 1. Chargement des données
-        try {
-            const res = await fetch('./images.json');
-            imagesData = await res.json();
-            gallery.innerHTML = imagesData.map((img, i) => `
-                <article class="photo-item" data-index="${i}">
-                    <div class="img-wrapper"><img src="${img.url}" alt="${img.id}"></div>
-                    <div class="exif-permanent">
-                        <span>${img.lieu}</span><span>${img.iso}</span><span>${img.focale}</span><span>${img.ouverture}</span>
-                    </div>
-                </article>
-            `).join('');
-            setupInteractions();
-        } catch (e) { console.error("Data error", e); }
+                // Interactions
+                document.querySelectorAll('.photo-item').forEach(item => {
+                    item.onclick = () => openViewer(parseInt(item.dataset.index));
+                    item.onmouseenter = () => cursor.classList.add('active');
+                    item.onmouseleave = () => cursor.classList.remove('active');
+                    new IntersectionObserver(entries => {
+                        entries.forEach(en => { if(en.isIntersecting) en.target.querySelector('img').classList.add('loaded'); });
+                    }, {threshold: 0.5}).observe(item);
+                });
 
-        // 2. Curseur X & Ghost UI
-        document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            document.body.classList.remove('idle');
-            clearTimeout(idleTimer);
-            idleTimer = setTimeout(() => document.body.classList.add('idle'), 3000);
+                const openViewer = (i) => {
+                    currentIndex = i;
+                    vImg.src = imagesData[currentIndex].url;
+                    dContent.innerHTML = `<p class="desc-text">${imagesData[currentIndex].description}</p>`;
+                    viewer.style.display = 'flex';
+                    setTimeout(() => viewer.classList.add('show'), 10);
+                    document.body.style.overflow = 'hidden';
+                };
+
+                const closeV = () => {
+                    viewer.classList.remove('show');
+                    setTimeout(() => viewer.style.display = 'none', 500);
+                    vDesc.classList.remove('show');
+                    document.body.style.overflow = '';
+                };
+
+                document.getElementById('close-viewer').onclick = closeV;
+                document.getElementById('next-btn').onclick = e => { e.stopPropagation(); openViewer((currentIndex + 1) % imagesData.length); };
+                document.getElementById('prev-btn').onclick = e => { e.stopPropagation(); openViewer((currentIndex - 1 + imagesData.length) % imagesData.length); };
+                document.getElementById('info-trigger').onclick = e => { e.stopPropagation(); vDesc.classList.toggle('show'); };
+                document.getElementById('desc-close').onclick = () => vDesc.classList.remove('show');
+                document.getElementById('legal-btn').onclick = () => document.getElementById('legal-modal').style.display = 'flex';
+                document.getElementById('close-legal').onclick = () => document.getElementById('legal-modal').style.display = 'none';
+
+                document.addEventListener('keydown', e => {
+                    if (!viewer.classList.contains('show')) return;
+                    if (e.key === "Escape") closeV();
+                    if (e.key === "ArrowRight") openViewer((currentIndex + 1) % imagesData.length);
+                    if (e.key === "ArrowLeft") openViewer((currentIndex - 1 + imagesData.length) % imagesData.length);
+                });
+            }
         });
-
-        function setupInteractions() {
-            document.querySelectorAll('.photo-item').forEach(item => {
-                item.onclick = () => openViewer(parseInt(item.dataset.index));
-                item.onmouseenter = () => cursor.classList.add('active');
-                item.onmouseleave = () => cursor.classList.remove('active');
-                
-                new IntersectionObserver(entries => {
-                    entries.forEach(en => { if(en.isIntersecting) en.target.querySelector('img').classList.add('loaded'); });
-                }, {threshold: 0.5}).observe(item);
-            });
-        }
-
-        function openViewer(i) {
-            currentIndex = i;
-            vImg.src = imagesData[currentIndex].url;
-            dContent.innerHTML = `<p class="desc-text">${imagesData[currentIndex].description}</p>`;
-            viewer.style.display = 'flex';
-            setTimeout(() => viewer.classList.add('show'), 10);
-            document.body.style.overflow = 'hidden';
-        }
-
-        const hide = () => {
-            viewer.classList.remove('show');
-            setTimeout(() => viewer.style.display = 'none', 500);
-            vDesc.classList.remove('show');
-            document.body.style.overflow = '';
-        };
-
-        document.getElementById('close-viewer').onclick = hide;
-        document.getElementById('next-btn').onclick = e => { e.stopPropagation(); openViewer((currentIndex + 1) % imagesData.length); };
-        document.getElementById('prev-btn').onclick = e => { e.stopPropagation(); openViewer((currentIndex - 1 + imagesData.length) % imagesData.length); };
-        document.getElementById('info-trigger').onclick = e => { e.stopPropagation(); vDesc.classList.toggle('show'); };
-        document.getElementById('desc-close').onclick = () => vDesc.classList.remove('show');
-        document.getElementById('legal-btn').onclick = () => document.getElementById('legal-modal').style.display = 'flex';
-        document.getElementById('close-legal').onclick = () => document.getElementById('legal-modal').style.display = 'none';
-
-        document.addEventListener('keydown', e => {
-            if (!viewer.classList.contains('show')) return;
-            if (e.key === "Escape") hide();
-            if (e.key === "ArrowRight") openViewer((currentIndex + 1) % imagesData.length);
-            if (e.key === "ArrowLeft") openViewer((currentIndex - 1 + imagesData.length) % imagesData.length);
-        });
-    });
-</script>
+    </script>
 </body>
 </html>

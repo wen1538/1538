@@ -2,6 +2,7 @@
     {
         "id": "velo",
         "url": "https://i.imgur.com/DsMMmci.jpeg",
+        "titre": "VÉLO CUSTOM",
         "lieu": "Nantes",
         "iso": "ISO 6400",
         "focale": "27mm",
@@ -11,6 +12,7 @@
     {
         "id": "pantin",
         "url": "https://i.imgur.com/KZBmKTa.jpeg",
+        "titre": "PANTIN BOIS",
         "lieu": "Atelier",
         "iso": "ISO 6400",
         "focale": "157mm",
@@ -20,6 +22,7 @@
     {
         "id": "femme",
         "url": "https://i.imgur.com/gepkOBg.jpeg",
+        "titre": "FEMME FONTAINE",
         "lieu": "Place Royale",
         "iso": "ISO 200",
         "focale": "156mm",
@@ -29,6 +32,7 @@
     {
         "id": "semelle",
         "url": "https://i.imgur.com/jLwJf2V.jpeg",
+        "titre": "SEMELLE NEIGE",
         "lieu": "Glace",
         "iso": "ISO 100",
         "focale": "27mm",
@@ -38,6 +42,7 @@
     {
         "id": "chocolaterie",
         "url": "https://i.imgur.com/2hbnTJ5.jpeg",
+        "titre": "VITRINE ROUGE",
         "lieu": "Rue de Nantes",
         "iso": "ISO 100",
         "focale": "27mm",
@@ -47,6 +52,7 @@
     {
         "id": "mains",
         "url": "https://i.imgur.com/e24W0q6.jpeg",
+        "titre": "MAINS PAIN",
         "lieu": "Soirée",
         "iso": "ISO 6400",
         "focale": "157mm",
@@ -56,6 +62,7 @@
     {
         "id": "chemin",
         "url": "https://i.imgur.com/4WeEEtI.jpeg",
+        "titre": "CHEMIN NEIGE",
         "lieu": "Gare SNCF",
         "iso": "ISO 6400",
         "focale": "27mm",
@@ -65,6 +72,7 @@
     {
         "id": "silhouette",
         "url": "https://i.imgur.com/mLBTNWJ.jpeg",
+        "titre": "SILHOUETTE ORANGE",
         "lieu": "Allée Tungstène",
         "iso": "ISO 6400",
         "focale": "157mm",
