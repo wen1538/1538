@@ -31,8 +31,9 @@
         .auto-hide { transition: opacity 0.8s ease; opacity: 1; }
         body.idle .auto-hide { opacity: 0; pointer-events: none; }
 
+        /* Header avec Logo Image */
         .header-logo { position: fixed; top: 30px; left: 40px; z-index: 1000; }
-        .logo-signature { font-family: 'Italianno', cursive; font-size: 3rem; color: #fff; text-decoration: none; }
+        .logo-img { height: 65px; width: auto; display: block; }
 
         /* Galerie */
         .photo-item { width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; scroll-snap-align: start; }
@@ -49,7 +50,11 @@
         .viewer.show { display: flex; opacity: 1; }
         .viewer-top-right { position: absolute; top: 30px; right: 40px; display: flex; gap: 30px; z-index: 10200; }
         .control { background: none; border: none; }
-        .icon-custom { width: 35px; filter: invert(1); opacity: 0.6; transition: 0.3s; }
+        
+        /* Icônes OBJ et BOIT agrandies */
+        .icon-custom { width: 55px; filter: invert(1); opacity: 0.8; transition: 0.3s; }
+        .icon-custom:hover { opacity: 1; transform: scale(1.1); }
+
         .viewer-image { max-width: 90%; max-height: 85%; object-fit: contain; }
         .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 3rem; opacity: 0.2; z-index: 10100; padding: 20px; }
         .left { left: 20px; } .right { right: 20px; }
@@ -76,7 +81,9 @@
     <div class="cursor-x" id="cursor-x"></div>
 
     <header class="header-logo auto-hide">
-        <a href="https://www.instagram.com/wbcht/" target="_blank" class="logo-signature">.1538</a>
+        <a href="https://www.instagram.com/wbcht/" target="_blank">
+            <img src=".1538.png" alt=".1538" class="logo-img">
+        </a>
     </header>
 
     <main class="gallery-container" id="gallery"></main>
@@ -123,7 +130,6 @@
             let currentIndex = 0;
             let idleTimer;
 
-            // Chargement Data
             try {
                 const res = await fetch('./images.json');
                 imagesData = await res.json();
@@ -140,7 +146,6 @@
             } catch (e) { console.error("Error loading JSON", e); }
 
             function setupUI() {
-                // Curseur & Inactivité
                 document.addEventListener('mousemove', e => {
                     cursor.style.left = e.clientX + 'px';
                     cursor.style.top = e.clientY + 'px';
@@ -149,7 +154,6 @@
                     idleTimer = setTimeout(() => document.body.classList.add('idle'), 3000);
                 });
 
-                // Interactions
                 document.querySelectorAll('.photo-item').forEach(item => {
                     item.onclick = () => openViewer(parseInt(item.dataset.index));
                     item.onmouseenter = () => cursor.classList.add('active');
