@@ -7,7 +7,7 @@
         "iso": "ISO 6400",
         "focale": "27mm",
         "ouverture": "f/4",
-        "description": "Je me baladais à Rennes quand je suis tombé sur cet engin. C’est plus un vélo à ce niveau, c’est une déclaration d’indépendance. J’ai ouvert à f/4 pour que les couleurs saturent bien l'espace tout en gardant le mouvement de la rue. Un vrai petit monstre de caractère qui attend son pilote."
+        "description": "Je me baladais à Rennes quand je suis tombé sur cet engin. C’est plus un vélo à ce niveau, c’est une déclaration d’indépendance. J’ai ouvert à f/4 pour que les couleurs saturent bien l'espace tout en gardant le mouvement de la rue."
     },
     {
         "id": "pantin",
@@ -17,7 +17,7 @@
         "iso": "ISO 6400",
         "focale": "157mm",
         "ouverture": "f/4",
-        "description": "Souvent, on essaie de garder la face, mais au fond, on se sent tous un peu comme ce pantin : articulé par les événements, posé sur un tapis trop grand pour nous. Mais bon, quitte à subir, autant le faire avec style sur du velours plutôt que de finir en paillasson. Le 157mm permet d'isoler cette petite solitude boisée."
+        "description": "Souvent, on est nous, parfois on est un pantin. on s'en rendrais presque compte que ça ne changerais rien, touchons du bois ! Le 157mm permet d'isoler cette petite solitude boisée."
     },
     {
         "id": "femme",
@@ -27,17 +27,17 @@
         "iso": "ISO 200",
         "focale": "156mm",
         "ouverture": "f/4",
-        "description": "J’ai passé dix minutes à discuter de la vie et de son sens avec elle sur les marches de la Place Royale. C’est une dame d’une gentillesse rare, un de ces moments où l’appareil photo n'est qu'un prétexte à la rencontre. Le noir et blanc s'imposait pour figer cette dignité et ce regard qui en a vu d'autres."
+        "description": "J’ai passé dix minutes à discuter de la vie et de son sens avec elle sur les marches de la Place Royale. C’est une dame d’une gentillesse rare, un de ces moments où l'on ne cherche qu'à partager de qu'on à de plus précieux, le temps. Le noir et blanc s'imposait pour figer cette dignité et ce regard qui en a vu d'autres."
     },
     {
         "id": "semelle",
         "url": "https://i.imgur.com/jLwJf2V.jpeg",
         "titre": "Pas à pas",
-        "lieu": "Glace",
+        "lieu": "Nantes",
         "iso": "ISO 100",
         "focale": "27mm",
         "ouverture": "f/7.1",
-        "description": "Imagine le gars qui a perdu sa semelle en pleine rando hivernale et qui a fini le chemin sur une chaussette... Ça m'a fait rire, alors j'ai fermé le diaphragme à f/7.1 pour choper chaque détail de cette débâcle. C’est le vestige d'un échec cuisant, mais c’est graphiquement parfait."
+        "description": "Il à commencé sa journée du mauvais pied, j'ai fermé le diaphragme à f/7.1 pour choper chaque détail de cette débâcle. C’est le vestige d'un échec cuisant, mais c’est jolie."
     },
     {
         "id": "chocolaterie",
@@ -77,6 +77,6 @@
         "iso": "ISO 6400",
         "focale": "157mm",
         "ouverture": "f/4",
-        "description": "J’ai attendu dans ce couloir orange presque 20 minutes qu'une silhouette veuille bien passer. Quand ce gars a surgi, j’ai déclenché pile au moment où le bokeh le transformait en fantôme. On est tous le passant de quelqu’un d’autre, une ombre floue dans le décor d'un inconnu. Cinématique à souhait."
+        "description": "On est tous le passant de quelqu’un d’autre au fond, une ombre floue dans le décor d'un inconnu. Ces photos où les passants s'invitent me poussent à imaginer une autre vie que la miennes."
     }
 ]
