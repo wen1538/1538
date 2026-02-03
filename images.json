@@ -17,7 +17,7 @@
         "iso": "ISO 6400",
         "focale": "157mm",
         "ouverture": "f/4",
-        "description": "Souvent, on est nous, parfois on est un pantin. on s'en rendrais presque compte que ça ne changerais rien, touchons du bois ! Le 157mm permet d'isoler cette petite solitude boisée."
+        "description": "Souvent, on est nous, parfois on est un pantin. on s'en rendrais presque compte que ça ne changerais rien, touchons du bois !"
     },
     {
         "id": "femme",
@@ -27,7 +27,7 @@
         "iso": "ISO 200",
         "focale": "156mm",
         "ouverture": "f/4",
-        "description": "J’ai passé dix minutes à discuter de la vie et de son sens avec elle sur les marches de la Place Royale. C’est une dame d’une gentillesse rare, un de ces moments où l'on ne cherche qu'à partager de qu'on à de plus précieux, le temps. Le noir et blanc s'imposait pour figer cette dignité et ce regard qui en a vu d'autres."
+        "description": "J’ai passé dix minutes à discuter de la vie et de son sens avec elle sur les marches de la Place Royale. C’est une dame d’une gentillesse rare, un de ces moments où l'on ne cherche qu'à partager de qu'on à de plus précieux, le temps."
     },
     {
         "id": "semelle",
@@ -37,7 +37,7 @@
         "iso": "ISO 100",
         "focale": "27mm",
         "ouverture": "f/7.1",
-        "description": "Il à commencé sa journée du mauvais pied, j'ai fermé le diaphragme à f/7.1 pour choper chaque détail de cette débâcle. C’est le vestige d'un échec cuisant, mais c’est jolie."
+        "description": "Il à commencé sa journée du mauvais pied, j'ai fermé le diaphragme à f/7.1 pour choper le vestige d'un échec cuisant, mais c’est jolie."
     },
     {
         "id": "chocolaterie",
@@ -47,7 +47,7 @@
         "iso": "ISO 100",
         "focale": "27mm",
         "ouverture": "f/4.5",
-        "description": "Nantes, un jour de pluie. Je cherchais un peu de chaleur et je tombe sur ce store rouge qui hurle. La contre-plongée donne au lieu un air de sanctuaire. Je n'ai pas seulement pris la photo, je suis reparti avec une tablette de chocolat. On appelle ça l'avantage professionnel du photographe."
+        "description": "Nantes, un jour de pluie. Je cherchais un peu de chaleur et je tombe sur ce store rouge qui hurle."
     },
     {
         "id": "mains",
@@ -57,7 +57,7 @@
         "iso": "ISO 6400",
         "focale": "157mm",
         "ouverture": "f/4",
-        "description": "Au milieu des tags et du bruit de la soirée, il y avait ce gamin qui protégeait son petit bonhomme de pain comme si c'était le dernier trésor du monde. Un focus serré sur les mains pour montrer la fragilité du truc. On signe tous nos vies de petits gestes comme celui-là, sans s'en rendre compte."
+        "description": "On signe tous nos vies de petits gestes comme celui-là, sans s'en rendre compte. On laisse une trace de notre passage comme des explorateurs."
     },
     {
         "id": "chemin",
