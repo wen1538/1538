@@ -2,81 +2,81 @@
     {
         "id": "velo",
         "url": "https://i.imgur.com/DsMMmci.jpeg",
-        "titre": "VÉLO CUSTOM",
+        "titre": "Vélobylette",
         "lieu": "Nantes",
         "iso": "ISO 6400",
         "focale": "27mm",
         "ouverture": "f/4",
-        "description": "Composition dynamique et saturée, un vélo électrique customisé aux roues multicolores et au cadre orné de stickers occupe le premier plan d’une rue piétonne animée. Ses couleurs vives contrastent avec les tables de café et le chien en arrière-plan ; il symbolise la liberté créative et l’énergie joyeuse de la vie urbaine."
+        "description": "Je me baladais à Rennes quand je suis tombé sur cet engin. C’est plus un vélo à ce niveau, c’est une déclaration d’indépendance. J’ai ouvert à f/4 pour que les couleurs saturent bien l'espace tout en gardant le mouvement de la rue. Un vrai petit monstre de caractère qui attend son pilote."
     },
     {
         "id": "pantin",
         "url": "https://i.imgur.com/KZBmKTa.jpeg",
-        "titre": "PANTIN BOIS",
-        "lieu": "Atelier",
+        "titre": "Pinocchio",
+        "lieu": "Rennes",
         "iso": "ISO 6400",
         "focale": "157mm",
         "ouverture": "f/4",
-        "description": "En lumière naturelle douce, un petit pantin articulé en bois repose immobile sur un tapis persan richement orné. Sa posture abandonnée, les couleurs vives des perles et le contraste avec le parquet usé évoquent la nostalgie d’une enfance révolue, un jouet qui attend patiemment un retour."
+        "description": "Souvent, on essaie de garder la face, mais au fond, on se sent tous un peu comme ce pantin : articulé par les événements, posé sur un tapis trop grand pour nous. Mais bon, quitte à subir, autant le faire avec style sur du velours plutôt que de finir en paillasson. Le 157mm permet d'isoler cette petite solitude boisée."
     },
     {
         "id": "femme",
         "url": "https://i.imgur.com/gepkOBg.jpeg",
-        "titre": "FEMME FONTAINE",
+        "titre": "Yveline",
         "lieu": "Place Royale",
         "iso": "ISO 200",
         "focale": "156mm",
         "ouverture": "f/4",
-        "description": "En noir et blanc à fort contraste, la silhouette frêle d’une femme âgée domine la composition. Assise sur les marches de pierre d’une fontaine, mains jointes, chapeau et manteau à franges, elle semble veiller sur le temps qui s’écoule avec l’eau ruisselante. Derrière elle, les passants flous rappellent la vie qui continue ; elle incarne la dignité tranquille d’un instant suspendu."
+        "description": "J’ai passé dix minutes à discuter de la vie et de son sens avec elle sur les marches de la Place Royale. C’est une dame d’une gentillesse rare, un de ces moments où l’appareil photo n'est qu'un prétexte à la rencontre. Le noir et blanc s'imposait pour figer cette dignité et ce regard qui en a vu d'autres."
     },
     {
         "id": "semelle",
         "url": "https://i.imgur.com/jLwJf2V.jpeg",
-        "titre": "SEMELLE NEIGE",
+        "titre": "Pas à pas",
         "lieu": "Glace",
         "iso": "ISO 100",
         "focale": "27mm",
         "ouverture": "f/7.1",
-        "description": "Plan serré sur une neige piétinée couverte d’empreintes. Au centre, une semelle de chaussure isolée repose comme un vestige. Les traces multiples et ce fragment solitaire créent une composition minimaliste puissante ; elle parle d’absence, de passage éphémère et des chemins laissés derrière soi."
+        "description": "Imagine le gars qui a perdu sa semelle en pleine rando hivernale et qui a fini le chemin sur une chaussette... Ça m'a fait rire, alors j'ai fermé le diaphragme à f/7.1 pour choper chaque détail de cette débâcle. C’est le vestige d'un échec cuisant, mais c’est graphiquement parfait."
     },
     {
         "id": "chocolaterie",
         "url": "https://i.imgur.com/2hbnTJ5.jpeg",
-        "titre": "VITRINE ROUGE",
+        "titre": "EUR",
         "lieu": "Rue de Nantes",
         "iso": "ISO 100",
         "focale": "27mm",
         "ouverture": "f/4.5",
-        "description": "Vue en contre-plongée, un store rouge vif et une vitrine illuminée dominent la rue. Les lettres lumineuses et les reflets chauds créent un appel visuel irrésistible. Cette devanture de chocolaterie offre un îlot de chaleur et de tentation au milieu d’une journée grise, rappelant le réconfort simple des petits plaisirs."
+        "description": "Nantes, un jour de pluie. Je cherchais un peu de chaleur et je tombe sur ce store rouge qui hurle. La contre-plongée donne au lieu un air de sanctuaire. Je n'ai pas seulement pris la photo, je suis reparti avec une tablette de chocolat. On appelle ça l'avantage professionnel du photographe."
     },
     {
         "id": "mains",
         "url": "https://i.imgur.com/e24W0q6.jpeg",
-        "titre": "MAINS PAIN",
+        "titre": "Signataire",
         "lieu": "Soirée",
         "iso": "ISO 6400",
         "focale": "157mm",
         "ouverture": "f/4",
-        "description": "En lumière douce avec une faible profondeur de champ, deux mains enfantines encadrent un petit personnage sculpté dans du pain ou du bois, au visage comique et expressif. Ce geste tendre au milieu d’un mur couvert de graffitis et d’autocollants transforme un objet humble en trésor d’imagination et d’innocence préservée."
+        "description": "Au milieu des tags et du bruit de la soirée, il y avait ce gamin qui protégeait son petit bonhomme de pain comme si c'était le dernier trésor du monde. Un focus serré sur les mains pour montrer la fragilité du truc. On signe tous nos vies de petits gestes comme celui-là, sans s'en rendre compte."
     },
     {
         "id": "chemin",
         "url": "https://i.imgur.com/4WeEEtI.jpeg",
-        "titre": "CHEMIN NEIGE",
+        "titre": "Frêle et froid",
         "lieu": "Gare SNCF",
         "iso": "ISO 6400",
         "focale": "27mm",
         "ouverture": "f/4",
-        "description": "Scène nocturne sous éclairage au sodium chaud, un chemin enneigé serpente entre arbres dénudés et réverbères. Le contraste entre la neige immaculée et les ombres profondes crée des lignes directrices puissantes ; ce sentier solitaire évoque le chemin intérieur, la marche silencieuse vers l’inconnu."
+        "description": "La gare de Nantes un soir de neige, c'est une ambiance à la Blade Runner mais version Loire-Atlantique. J'adore cette lumière au sodium qui réchauffe visuellement ce qui est techniquement gelé. J'ai suivi cette ligne directrice en espérant que le train n'ait pas de retard. Spoiler : il en avait."
     },
     {
         "id": "silhouette",
         "url": "https://i.imgur.com/mLBTNWJ.jpeg",
-        "titre": "SILHOUETTE ORANGE",
-        "lieu": "Allée Tungstène",
+        "titre": "Le Passant",
+        "lieu": "Nantes",
         "iso": "ISO 6400",
         "focale": "157mm",
         "ouverture": "f/4",
-        "description": "Dans un couloir étroit baigné d’une lumière orangée intense, les lignes de perspective guident le regard vers une silhouette floue qui s’éloigne. Le bokeh et la lueur chaude donnent une atmosphère onirique ; cette image capture le sentiment poétique d’un départ, d’un passage vers l’ailleurs."
+        "description": "J’ai attendu dans ce couloir orange presque 20 minutes qu'une silhouette veuille bien passer. Quand ce gars a surgi, j’ai déclenché pile au moment où le bokeh le transformait en fantôme. On est tous le passant de quelqu’un d’autre, une ombre floue dans le décor d'un inconnu. Cinématique à souhait."
     }
 ]
