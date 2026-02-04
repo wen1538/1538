@@ -31,7 +31,7 @@
         .auto-hide { transition: opacity 0.8s ease; opacity: 1; }
         body.idle .auto-hide { opacity: 0; pointer-events: none; }
 
-        /* Header avec nouveau Logo Imgur */
+        /* Header Logo */
         .header-logo { position: fixed; top: 30px; left: 40px; z-index: 1000; }
         .logo-img { height: 65px; width: auto; display: block; transition: transform 0.3s ease; }
         .logo-img:hover { transform: scale(1.05); }
@@ -52,7 +52,6 @@
         .viewer-top-right { position: absolute; top: 30px; right: 40px; display: flex; gap: 30px; z-index: 10200; }
         .control { background: none; border: none; }
         
-        /* Icônes OBJ et BOIT agrandies */
         .icon-custom { width: 55px; filter: invert(1); opacity: 0.8; transition: 0.3s; }
         .icon-custom:hover { opacity: 1; transform: scale(1.1); }
 
@@ -71,9 +70,16 @@
         .footer-links { font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.2); text-transform: uppercase; display: flex; gap: 40px; }
         #legal-btn { background: none; border: none; color: inherit; text-decoration: underline; }
 
+        /* Bouton Documentation Canva Personnalisé */
+        .btn-canva {
+            position: fixed; bottom: 30px; right: 40px; z-index: 9999;
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .canva-icon-custom { width: 60px; height: auto; transition: 0.3s ease; }
+        .btn-canva:hover .canva-icon-custom { transform: scale(1.1) rotate(5deg); filter: drop-shadow(0 0 10px var(--accent-blue)); }
+
         .legal-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 20000; display: none; align-items: center; justify-content: center; }
         .legal-content { background: #111; padding: 40px; text-align: center; border: 1px solid #222; }
-        #close-legal { margin-top: 20px; padding: 8px 20px; background: #333; color: #fff; border: none; }
     </style>
 </head>
 <body>
@@ -103,6 +109,11 @@
         </div>
     </div>
 
+    <a href="https://www.canva.com/design/DAHAFL_cLYw/kMb0fK9BdG6mAeRzYDpZLQ/edit?utm_content=DAHAFL_cLYw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
+       target="_blank" class="btn-canva auto-hide">
+        <img src="https://i.imgur.com/5kSQU8s.png" class="canva-icon-custom" alt="Documentation">
+    </a>
+
     <footer class="site-footer auto-hide">
         <div class="footer-line"></div>
         <div class="footer-links">
@@ -115,7 +126,7 @@
         <div class="legal-content">
             <h3>Mentions Légales</h3><br>
             <p>Photographies originales par .1538. Tous droits réservés.</p>
-            <button id="close-legal">Fermer</button>
+            <button id="close-legal" style="margin-top:20px; padding:8px 20px; background:#333; color:#fff; border:none;">Fermer</button>
         </div>
     </div>
 
