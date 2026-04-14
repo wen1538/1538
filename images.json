@@ -1,62 +1,80 @@
-[
-  {
-    "id": "etape1",
-    "url": "https://i.imgur.com/4t3VTQH.png",
-    "titre": "Étape 1 • Le Point 0",
-    "lieu": "Phase",
-    "iso": "Intention",
-    "focale": "Authenticité",
-    "ouverture": "Résilience",
-    "description": "Le projet .1538, c'est la volonté de centraliser mes passions dans un espace qui m'appartient vraiment. Je ne voulais pas d'un énième site pré-construit sur Canva. Je cherchais l'authenticité d'une création personnelle et le défi technique de construire mon propre outil de A à Z."
-  },
-  {
-    "id": "etape2",
-    "url": "https://i.imgur.com/J8OF6n7.png",
-    "titre": "Étape 2 • Prototype",
-    "lieu": "Phase",
-    "iso": "Canva + CodePen",
-    "focale": "Vision immédiate",
-    "ouverture": "10 minutes",
-    "description": "Le projet a démarré avec un prototype réalisé sur Canva en seulement 10 minutes. J'ai choisi le trio HTML, CSS et JavaScript. CodePen m'a permis d'avoir un aperçu visuel en temps réel et de corriger mes erreurs avant le site final."
-  },
-  {
-    "id": "etape3",
-    "url": "https://i.imgur.com/zUSJOgr.png",
-    "titre": "Étape 3 • Fichiers réels",
-    "lieu": "Phase",
-    "iso": "VS Code + Imgur",
-    "focale": "Structure réelle",
-    "ouverture": "Précision",
-    "description": "Une fois mon code structuré sur CodePen, j'ai dû apprendre Visual Studio Code pour créer de vrais fichiers. Imgur m'a permis d'héberger les images et de récupérer des liens propres à intégrer directement dans le code."
-  },
-  {
-    "id": "etape4",
-    "url": "https://i.imgur.com/UrjaAqH.png",
-    "titre": "Étape 4 • All-in-One",
-    "lieu": "Phase",
-    "iso": "JSON + Python",
-    "focale": "Interactions",
-    "ouverture": "Fluidité & Néons",
-    "description": "J'ai conservé le format All-in-One pour garder une vision globale. Le script Python et le JSON me permettent de mettre à jour les photos sans toucher au code. J'ai ajouté le curseur néon, les transitions aimantées et le bouton info."
-  },
-  {
-    "id": "etape5",
-    "url": "https://i.imgur.com/Rt4IdR0.png",
-    "titre": "Étape 5 • Déploiement",
-    "lieu": "Phase",
-    "iso": "GitHub + Netlify",
-    "focale": "Automatisation",
-    "ouverture": "Leçon AdSense",
-    "description": "Netlify a rendu le déploiement automatique. Chaque push sur GitHub mettait le site à jour en quelques secondes. L'ajout d'AdSense a cassé l'affichage et m'a appris l'importance de la simplicité."
-  },
-  {
-    "id": "etape6",
-    "url": "https://i.imgur.com/WQcwcbG.png",
-    "titre": "Étape 6 • Promotion réelle",
-    "lieu": "Phase",
-    "iso": "Marketing de rue",
-    "focale": "QR Codes",
-    "ouverture": "Connexion humaine",
-    "description": "Après AdSense, j'ai créé des QR codes avec QRTiger et les ai placés dans les rues de Nantes. Un seul QR code sur une poubelle a suffi pour qu'une personne scanne mon travail. Donc si tu passes ici, merci à toi de ta curiosité !"
-  }
+ "id": "velo",
+        "url": "https://i.imgur.com/DsMMmci.jpeg",
+        "titre": "Auto-moto",
+        "lieu": "Nantes",
+        "iso": "ISO 6400",
+        "focale": "27mm",
+        "ouverture": "f/4",
+        "description": "Je me baladais à Rennes quand je suis tombé sur cet engin. C’est plus un vélo à ce niveau, c’est une déclaration d’indépendance. J’ai ouvert à f/4 pour que les couleurs saturent bien l'espace tout en gardant le mouvement de la rue."
+    },
+    {
+        "id": "pantin",
+        "url": "https://i.imgur.com/KZBmKTa.jpeg",
+        "titre": "Pinocchio",
+        "lieu": "Rennes",
+        "iso": "ISO 6400",
+        "focale": "157mm",
+        "ouverture": "f/4",
+        "description": "Souvent, on est nous, parfois on est un pantin. on s'en rendrais presque compte que ça ne changerais rien, touchons du bois !"
+    },
+    {
+        "id": "femme",
+        "url": "https://i.imgur.com/gepkOBg.jpeg",
+        "titre": "Yveline",
+        "lieu": "Place Royale",
+        "iso": "ISO 200",
+        "focale": "156mm",
+        "ouverture": "f/4",
+        "description": "J’ai passé dix minutes à discuter de la vie et de son sens avec elle sur les marches de la Place Royale. C’est une dame d’une gentillesse rare, un de ces moments où l'on ne cherche qu'à partager de qu'on à de plus précieux, le temps."
+    },
+    {
+        "id": "semelle",
+        "url": "https://i.imgur.com/jLwJf2V.jpeg",
+        "titre": "Pas à pas",
+        "lieu": "Nantes",
+        "iso": "ISO 100",
+        "focale": "27mm",
+        "ouverture": "f/7.1",
+        "description": "Il à commencé sa journée du mauvais pied, j'ai fermé le diaphragme à f/7.1 pour choper le vestige d'un échec cuisant, mais c’est jolie."
+    },
+    {
+        "id": "chocolaterie",
+        "url": "https://i.imgur.com/2hbnTJ5.jpeg",
+        "titre": "EUR",
+        "lieu": "Rue de Nantes",
+        "iso": "ISO 100",
+        "focale": "27mm",
+        "ouverture": "f/4.5",
+        "description": "Nantes, un jour de pluie. Je cherchais un peu de chaleur et je tombe sur ce store rouge qui hurle."
+    },
+    {
+        "id": "mains",
+        "url": "https://i.imgur.com/e24W0q6.jpeg",
+        "titre": "Signataire",
+        "lieu": "Soirée",
+        "iso": "ISO 6400",
+        "focale": "157mm",
+        "ouverture": "f/4",
+        "description": "On signe tous nos vies de petits gestes comme celui-là, sans s'en rendre compte. On laisse une trace de notre passage comme des explorateurs."
+    },
+    {
+        "id": "chemin",
+        "url": "https://i.imgur.com/4WeEEtI.jpeg",
+        "titre": "Frêle et froid",
+        "lieu": "Gare SNCF",
+        "iso": "ISO 6400",
+        "focale": "27mm",
+        "ouverture": "f/4",
+        "description": "La gare de Nantes un soir de neige, c'est une ambiance à la Blade Runner mais version Loire-Atlantique. J'adore cette lumière au sodium qui réchauffe visuellement ce qui est techniquement gelé. J'ai suivi cette ligne directrice en espérant que le train n'ait pas de retard. Spoiler : il en avait."
+    },
+    {
+        "id": "silhouette",
+        "url": "https://i.imgur.com/mLBTNWJ.jpeg",
+        "titre": "Le Passant",
+        "lieu": "Nantes",
+        "iso": "ISO 6400",
+        "focale": "157mm",
+        "ouverture": "f/4",
+        "description": "On est tous le passant de quelqu’un d’autre au fond, une ombre floue dans le décor d'un inconnu. Ces photos où les passants s'invitent me poussent à imaginer une autre vie que la miennes."
+    }
 ]
