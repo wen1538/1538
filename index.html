@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>.1538 | Portfolio</title>
+    <title>.1538 | La Naissance du Site</title>
     <link rel="icon" type="image/png" href="wen..png">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Italianno&display=swap" rel="stylesheet">
     <style>
@@ -12,74 +12,52 @@
         html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
         body { background: var(--bg); color: var(--text); font-family: 'Playfair Display', serif; overflow-x: hidden; }
 
-        /* Curseur X Néon */
-        .cursor-x {
-            position: fixed; width: 14px; height: 14px; pointer-events: none; z-index: 100000;
-            transform: translate(-50%, -50%); mix-blend-mode: difference;
-        }
-        .cursor-x::before, .cursor-x::after {
-            content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1.2px; 
-            background: #fff; box-shadow: 0 0 8px var(--neon);
-        }
+        .cursor-x { position: fixed; width: 14px; height: 14px; pointer-events: none; z-index: 100000; transform: translate(-50%, -50%); mix-blend-mode: difference; }
+        .cursor-x::before, .cursor-x::after { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1.2px; background: #fff; box-shadow: 0 0 8px var(--neon); }
         .cursor-x::before { transform: rotate(45deg); }
         .cursor-x::after { transform: rotate(-45deg); }
         .cursor-x.active { transform: translate(-50%, -50%) scale(1.8) rotate(90deg); transition: transform 0.25s; }
 
         .film-grain { position: fixed; inset: 0; background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Overlay.png"); opacity: 0.04; pointer-events: none; z-index: 9999; }
 
-        /* Ghost UI (Auto-hide) */
         .auto-hide { transition: opacity 0.8s ease; opacity: 1; }
         body.idle .auto-hide { opacity: 0; pointer-events: none; }
 
-        /* Header Logo */
         .header-logo { position: fixed; top: 30px; left: 40px; z-index: 1000; }
         .logo-img { height: 65px; width: auto; display: block; transition: transform 0.3s ease; }
         .logo-img:hover { transform: scale(1.05); }
 
-        /* Galerie */
         .photo-item { width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; scroll-snap-align: start; }
         .img-wrapper { width: 85vw; max-width: 1000px; height: 70vh; overflow: hidden; background: #050505; }
         .photo-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: blur(20px); transition: 1.8s cubic-bezier(0.19, 1, 0.22, 1); }
-        .photo-item img.loaded { opacity: 0.8; filter: blur(0); }
+        .photo-item img.loaded { opacity: 0.85; filter: blur(0); }
         .photo-item:hover img { opacity: 1; transform: scale(1.02); }
 
-        .exif-bar { display: flex; gap: 2rem; padding-top: 3vh; font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.2); text-transform: uppercase; align-items: center; }
-        .exif-titre { color: rgba(255,255,255,0.6); font-weight: bold; font-size: 11px; }
+        .exif-bar { display: flex; gap: 2rem; padding-top: 3vh; font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.2); text-transform: uppercase; align-items: center; flex-wrap: wrap; justify-content: center; }
+        .exif-titre { color: rgba(255,255,255,0.7); font-weight: bold; font-size: 11px; }
 
-        /* Viewer */
         .viewer { position: fixed; inset: 0; background: #000; z-index: 10000; display: none; opacity: 0; transition: 0.5s; align-items: center; justify-content: center; }
         .viewer.show { display: flex; opacity: 1; }
         .viewer-top-right { position: absolute; top: 30px; right: 40px; display: flex; gap: 30px; z-index: 10200; }
         .control { background: none; border: none; }
-        
         .icon-custom { width: 55px; filter: invert(1); opacity: 0.8; transition: 0.3s; }
         .icon-custom:hover { opacity: 1; transform: scale(1.1); }
 
-        .viewer-image { max-width: 90%; max-height: 85%; object-fit: contain; }
-        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 3rem; opacity: 0.2; z-index: 10100; padding: 20px; }
+        .viewer-image { max-width: 92%; max-height: 88%; object-fit: contain; }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 3.5rem; opacity: 0.25; z-index: 10100; padding: 20px; }
         .left { left: 20px; } .right { right: 20px; }
 
-        .viewer-description { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 600px; padding: 30px; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); display: none; z-index: 10300; }
+        .viewer-description { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 620px; padding: 30px; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); display: none; z-index: 10300; border-radius: 8px; }
         .viewer-description.show { display: block; }
-        .desc-text { font-size: 1.05rem; line-height: 1.7; color: #bbb; text-align: center; font-style: italic; }
-        #desc-close { position: absolute; top: 10px; right: 15px; background: none; border: none; color: var(--accent-red); font-size: 1.2rem; }
+        .desc-text { font-size: 1.1rem; line-height: 1.75; color: #bbb; text-align: center; font-style: italic; }
 
-        /* Footer */
         .site-footer { padding: 80px 0 40px; display: flex; flex-direction: column; align-items: center; }
         .footer-line { width: 100px; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 20px; }
         .footer-links { font-size: 9px; letter-spacing: 3px; color: rgba(255,255,255,0.2); text-transform: uppercase; display: flex; gap: 40px; }
-        #legal-btn { background: none; border: none; color: inherit; text-decoration: underline; }
 
-        /* Bouton Documentation Canva Personnalisé */
-        .btn-canva {
-            position: fixed; bottom: 30px; right: 40px; z-index: 9999;
-            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-        }
+        .btn-canva { position: fixed; bottom: 30px; right: 40px; z-index: 9999; transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); }
         .canva-icon-custom { width: 60px; height: auto; transition: 0.3s ease; }
-        .btn-canva:hover .canva-icon-custom { transform: scale(1.1) rotate(5deg); filter: drop-shadow(0 0 10px var(--accent-blue)); }
-
-        .legal-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 20000; display: none; align-items: center; justify-content: center; }
-        .legal-content { background: #111; padding: 40px; text-align: center; border: 1px solid #222; }
+        .btn-canva:hover .canva-icon-custom { transform: scale(1.12) rotate(5deg); filter: drop-shadow(0 0 12px var(--accent-blue)); }
     </style>
 </head>
 <body>
@@ -122,14 +100,6 @@
         </div>
     </footer>
 
-    <div class="legal-modal" id="legal-modal">
-        <div class="legal-content">
-            <h3>Mentions Légales</h3><br>
-            <p>Photographies originales par .1538. Tous droits réservés.</p>
-            <button id="close-legal" style="margin-top:20px; padding:8px 20px; background:#333; color:#fff; border:none;">Fermer</button>
-        </div>
-    </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const gallery = document.getElementById('gallery');
@@ -147,7 +117,7 @@
                 imagesData = await res.json();
                 gallery.innerHTML = imagesData.map((img, i) => `
                     <article class="photo-item" data-index="${i}">
-                        <div class="img-wrapper"><img src="${img.url}" alt="${img.id}"></div>
+                        <div class="img-wrapper"><img src="${img.url}" alt="${img.id}" loading="lazy"></div>
                         <div class="exif-bar">
                             <span class="exif-titre">${img.titre}</span>
                             <span>${img.lieu}</span><span>${img.iso}</span><span>${img.focale}</span><span>${img.ouverture}</span>
@@ -163,7 +133,7 @@
                     cursor.style.top = e.clientY + 'px';
                     document.body.classList.remove('idle');
                     clearTimeout(idleTimer);
-                    idleTimer = setTimeout(() => document.body.classList.add('idle'), 3000);
+                    idleTimer = setTimeout(() => document.body.classList.add('idle'), 2800);
                 });
 
                 document.querySelectorAll('.photo-item').forEach(item => {
@@ -172,7 +142,7 @@
                     item.onmouseleave = () => cursor.classList.remove('active');
                     new IntersectionObserver(entries => {
                         entries.forEach(en => { if(en.isIntersecting) en.target.querySelector('img').classList.add('loaded'); });
-                    }, {threshold: 0.5}).observe(item);
+                    }, {threshold: 0.6}).observe(item);
                 });
 
                 const openViewer = (i) => {
@@ -196,8 +166,6 @@
                 document.getElementById('prev-btn').onclick = e => { e.stopPropagation(); openViewer((currentIndex - 1 + imagesData.length) % imagesData.length); };
                 document.getElementById('info-trigger').onclick = e => { e.stopPropagation(); vDesc.classList.toggle('show'); };
                 document.getElementById('desc-close').onclick = () => vDesc.classList.remove('show');
-                document.getElementById('legal-btn').onclick = () => document.getElementById('legal-modal').style.display = 'flex';
-                document.getElementById('close-legal').onclick = () => document.getElementById('legal-modal').style.display = 'none';
 
                 document.addEventListener('keydown', e => {
                     if (!viewer.classList.contains('show')) return;
