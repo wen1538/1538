@@ -4,79 +4,95 @@
         "url": "https://i.imgur.com/DsMMmci.jpeg",
         "titre": "Vélobylette",
         "lieu": "Nantes",
+        "rubrique": "Nantes",
         "iso": "ISO 6400",
         "focale": "27mm",
         "ouverture": "f/4",
-        "description": "Je me baladais à Rennes quand je suis tombé sur cet engin. C’est plus un vélo à ce niveau, c’est une déclaration d’indépendance. J’ai ouvert à f/4 pour que les couleurs saturent bien l'espace tout en gardant le mouvement de la rue."
+        "featured": true,
+        "description": "Je me baladais à Rennes quand je suis tombé sur cet engin..."
     },
     {
         "id": "pantin",
         "url": "https://i.imgur.com/KZBmKTa.jpeg",
         "titre": "Pinocchio",
         "lieu": "Rennes",
+        "rubrique": "Rennes",
         "iso": "ISO 6400",
         "focale": "157mm",
         "ouverture": "f/4",
-        "description": "Souvent, on est nous, parfois on est un pantin. on s'en rendrais presque compte que ça ne changerais rien, touchons du bois !"
+        "featured": false,
+        "description": "Souvent, on est nous, parfois on est un pantin..."
     },
     {
         "id": "femme",
         "url": "https://i.imgur.com/gepkOBg.jpeg",
         "titre": "Yveline",
         "lieu": "Place Royale",
+        "rubrique": "Nantes",
         "iso": "ISO 200",
         "focale": "156mm",
         "ouverture": "f/4",
-        "description": "J’ai passé dix minutes à discuter de la vie et de son sens avec elle sur les marches de la Place Royale. C’est une dame d’une gentillesse rare, un de ces moments où l'on ne cherche qu'à partager de qu'on à de plus précieux, le temps."
+        "featured": false,
+        "description": "J’ai passé dix minutes à discuter de la vie..."
     },
     {
         "id": "semelle",
         "url": "https://i.imgur.com/jLwJf2V.jpeg",
         "titre": "Pas à pas",
         "lieu": "Nantes",
+        "rubrique": "Nantes",
         "iso": "ISO 100",
         "focale": "27mm",
         "ouverture": "f/7.1",
-        "description": "Il à commencé sa journée du mauvais pied, j'ai fermé le diaphragme à f/7.1 pour choper le vestige d'un échec cuisant, mais c’est jolie."
+        "featured": false,
+        "description": "Il à commencé sa journée du mauvais pied..."
     },
     {
         "id": "chocolaterie",
         "url": "https://i.imgur.com/2hbnTJ5.jpeg",
         "titre": "EUR",
         "lieu": "Rue de Nantes",
+        "rubrique": "Nantes",
         "iso": "ISO 100",
         "focale": "27mm",
         "ouverture": "f/4.5",
-        "description": "Nantes, un jour de pluie. Je cherchais un peu de chaleur et je tombe sur ce store rouge qui hurle."
+        "featured": true,
+        "description": "Nantes, un jour de pluie..."
     },
     {
         "id": "mains",
         "url": "https://i.imgur.com/e24W0q6.jpeg",
         "titre": "Signataire",
         "lieu": "Soirée",
+        "rubrique": "Projets",
         "iso": "ISO 6400",
         "focale": "157mm",
         "ouverture": "f/4",
-        "description": "On signe tous nos vies de petits gestes comme celui-là, sans s'en rendre compte. On laisse une trace de notre passage comme des explorateurs."
+        "featured": false,
+        "description": "On signe tous nos vies de petits gestes..."
     },
     {
         "id": "chemin",
         "url": "https://i.imgur.com/4WeEEtI.jpeg",
         "titre": "Frêle et froid",
         "lieu": "Gare SNCF",
+        "rubrique": "Nantes",
         "iso": "ISO 6400",
         "focale": "27mm",
         "ouverture": "f/4",
-        "description": "La gare de Nantes un soir de neige, c'est une ambiance à la Blade Runner mais version Loire-Atlantique. J'adore cette lumière au sodium qui réchauffe visuellement ce qui est techniquement gelé. J'ai suivi cette ligne directrice en espérant que le train n'ait pas de retard. Spoiler : il en avait."
+        "featured": true,
+        "description": "La gare de Nantes un soir de neige..."
     },
     {
         "id": "silhouette",
         "url": "https://i.imgur.com/mLBTNWJ.jpeg",
         "titre": "Le Passant",
         "lieu": "Nantes",
+        "rubrique": "Nantes",
         "iso": "ISO 6400",
         "focale": "157mm",
         "ouverture": "f/4",
-        "description": "On est tous le passant de quelqu’un d’autre au fond, une ombre floue dans le décor d'un inconnu. Ces photos où les passants s'invitent me poussent à imaginer une autre vie que la miennes."
+        "featured": false,
+        "description": "On est tous le passant de quelqu’un d’autre..."
     }
 ]
