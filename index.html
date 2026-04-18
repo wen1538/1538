@@ -6,7 +6,7 @@
     <title>.1538 | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #000; --text: #f4f4f4; --neon: rgba(255, 255, 255, 0.4); }
+        :root { --bg: #000; --text: #f4f4f4; --neon: rgba(255, 255, 255, 0.4); --accent-blue: #4da6ff; }
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
         body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
@@ -17,31 +17,38 @@
         .cursor-x::before { transform: rotate(45deg); } .cursor-x::after { transform: rotate(-45deg); }
         .cursor-x.active { transform: translate(-50%, -50%) scale(2) rotate(90deg); transition: 0.2s; }
 
-        /* Navigation */
+        /* Navigation & Logo (Lien Insta) */
         header { position: fixed; top: 30px; left: 40px; z-index: 1000; }
-        .logo-img { height: 50px; filter: invert(1); transition: 0.3s; }
-        nav { position: fixed; top: 110px; left: 40px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
-        .nav-link { background: none; border: none; color: rgba(255,255,255,0.2); font-family: inherit; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; text-align: left; transition: 0.3s; }
-        .nav-link:hover, .nav-link.active { color: #fff; transform: translateX(5px); }
+        .logo-img { height: 60px; filter: invert(1); transition: 0.3s ease; }
+        .logo-img:hover { transform: scale(1.1); filter: invert(1) drop-shadow(0 0 8px #fff); }
+        
+        nav { position: fixed; top: 120px; left: 40px; z-index: 1000; display: flex; flex-direction: column; gap: 12px; }
+        .nav-link { background: none; border: none; color: rgba(255,255,255,0.2); font-family: inherit; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; text-align: left; transition: 0.4s; }
+        .nav-link:hover, .nav-link.active { color: #fff; transform: translateX(8px); }
+
+        /* Bouton Canva (Documentation) */
+        .btn-canva { position: fixed; bottom: 30px; right: 40px; z-index: 9999; transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); }
+        .canva-icon-custom { width: 60px; height: auto; transition: 0.3s ease; }
+        .btn-canva:hover .canva-icon-custom { transform: scale(1.1) rotate(5deg); filter: drop-shadow(0 0 10px var(--accent-blue)); }
 
         /* Grille Responsive */
         .gallery-container { padding: 80px 40px 80px 240px; min-height: 100vh; }
-        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 40px; }
         
-        .photo-card { grid-column: span 4; opacity: 0; transform: translateY(20px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
+        .photo-card { grid-column: span 4; opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
         .photo-card.visible { opacity: 1; transform: translateY(0); }
         .photo-card.featured { grid-column: span 8; }
 
-        .img-box { width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #050505; margin-bottom: 15px; }
+        .img-box { width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #080808; margin-bottom: 15px; }
         .photo-card.featured .img-box { aspect-ratio: 16/8; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 1.5s ease; }
-        .photo-card:hover img { filter: grayscale(0); transform: scale(1.05); }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 2s ease; }
+        .photo-card:hover img { filter: grayscale(0); transform: scale(1.03); }
 
         .meta { display: flex; justify-content: space-between; font-size: 8px; letter-spacing: 2px; color: rgba(255,255,255,0.3); text-transform: uppercase; }
-        .meta h3 { font-family: 'Playfair Display', serif; font-size: 14px; color: #fff; text-transform: none; font-style: italic; }
+        .meta h3 { font-family: 'Playfair Display', serif; font-size: 15px; color: #fff; text-transform: none; font-style: italic; }
 
         /* Viewer */
-        .viewer { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; display: none; opacity: 0; transition: 0.5s; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
+        .viewer { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; display: none; opacity: 0; transition: 0.5s; align-items: center; justify-content: center; backdrop-filter: blur(15px); }
         .viewer.show { display: flex; opacity: 1; }
         .viewer img { max-width: 85%; max-height: 80%; object-fit: contain; }
         .viewer-close { position: absolute; top: 30px; right: 40px; background: none; border: none; }
@@ -51,6 +58,7 @@
         @media (max-width: 1024px) {
             .gallery-container { padding: 180px 25px 50px; }
             nav { top: 100px; left: 25px; flex-direction: row; flex-wrap: wrap; }
+            header { left: 25px; }
             .photo-card, .photo-card.featured { grid-column: span 12; }
             #cursor-x { display: none; } * { cursor: auto !important; }
         }
@@ -62,7 +70,9 @@
     <div id="cursor-x" class="cursor-x"></div>
 
     <header>
-        <img src="https://i.imgur.com/ELW5rnM.png" class="logo-img" alt=".1538">
+        <a href="https://www.instagram.com/wbcht/" target="_blank">
+            <img src="https://i.imgur.com/ELW5rnM.png" class="logo-img" alt=".1538">
+        </a>
     </header>
 
     <nav id="rubriques">
@@ -80,6 +90,10 @@
         <button class="viewer-close"><img src="boit.png"></button>
         <img id="v-img" src="">
     </div>
+
+    <a href="https://www.canva.com/design/DAHAFL_cLYw/kMb0fK9BdG6mAeRzYDpZLQ/edit" target="_blank" class="btn-canva">
+        <img src="https://i.imgur.com/5kSQU8s.png" class="canva-icon-custom" alt="Documentation">
+    </a>
 
     <script>
         let db = [];
