@@ -3,149 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>.1538 | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300&display=swap" rel="stylesheet">
+    <title>.1538 | MAGAZINE BRUT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #000; --text: #f4f4f4; --neon: rgba(255, 255, 255, 0.4); --accent-blue: #4da6ff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
-        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
-
-        /* Effets Visuels */
-        .film-grain { position: fixed; inset: 0; background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Overlay.png"); opacity: 0.04; pointer-events: none; z-index: 9999; }
-        .cursor-x { position: fixed; width: 14px; height: 14px; pointer-events: none; z-index: 100000; transform: translate(-50%, -50%); mix-blend-mode: difference; }
-        .cursor-x::before, .cursor-x::after { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1.2px; background: #fff; box-shadow: 0 0 8px var(--neon); }
-        .cursor-x::before { transform: rotate(45deg); } .cursor-x::after { transform: rotate(-45deg); }
-        .cursor-x.active { transform: translate(-50%, -50%) scale(2) rotate(90deg); transition: 0.2s; }
-
-        /* Navigation & Logo (Lien Insta) */
-        header { position: fixed; top: 30px; left: 40px; z-index: 1000; }
-        .logo-img { height: 60px; filter: invert(1); transition: 0.3s ease; }
-        .logo-img:hover { transform: scale(1.1); filter: invert(1) drop-shadow(0 0 8px #fff); }
+        :root { --bg: #0a0a0a; --text: #e0e0e0; --accent: #fff; --grey: #333; --dim: #666; }
         
-        nav { position: fixed; top: 120px; left: 40px; z-index: 1000; display: flex; flex-direction: column; gap: 12px; }
-        .nav-link { background: none; border: none; color: rgba(255,255,255,0.2); font-family: inherit; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; text-align: left; transition: 0.4s; }
-        .nav-link:hover, .nav-link.active { color: #fff; transform: translateX(8px); }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); font-family: 'Special Elite', serif; overflow-x: hidden; }
 
-        /* Bouton Canva (Documentation) */
-        .btn-canva { position: fixed; bottom: 30px; right: 40px; z-index: 9999; transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); }
-        .canva-icon-custom { width: 60px; height: auto; transition: 0.3s ease; }
-        .btn-canva:hover .canva-icon-custom { transform: scale(1.1) rotate(5deg); filter: drop-shadow(0 0 10px var(--accent-blue)); }
+        /* Superposition de grain de film vintage */
+        .film-grain { position: fixed; inset: 0; background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Overlay.png"); opacity: 0.1; pointer-events: none; z-index: 9999; }
 
-        /* Grille Responsive */
-        .gallery-container { padding: 80px 40px 80px 240px; min-height: 100vh; }
-        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 40px; }
+        /* Navigation fixe à gauche */
+        header { position: fixed; top: 25px; left: 30px; z-index: 1000; }
+        .logo-img { height: 55px; filter: invert(1); transition: transform 0.3s; }
+        .logo-img:hover { transform: rotate(-2deg) scale(1.05); }
         
-        .photo-card { grid-column: span 4; opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.19, 1, 0.22, 1); }
-        .photo-card.visible { opacity: 1; transform: translateY(0); }
-        .photo-card.featured { grid-column: span 8; }
+        nav { position: fixed; top: 120px; left: 30px; z-index: 1000; width: 220px; display: flex; flex-direction: column; }
+        .nav-link { color: var(--grey); text-decoration: none; font-family: 'VT323', monospace; font-size: 28px; text-transform: uppercase; transition: 0.3s; padding: 5px 0; letter-spacing: 1px; }
+        .nav-link:hover, .nav-link.active { color: var(--accent); transform: translateX(8px); }
 
-        .img-box { width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #080808; margin-bottom: 15px; }
-        .photo-card.featured .img-box { aspect-ratio: 16/8; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 2s ease; }
-        .photo-card:hover img { filter: grayscale(0); transform: scale(1.03); }
+        /* Descriptions courtes sous menu actif */
+        .rubrique-desc { font-size: 11px; color: var(--dim); margin-bottom: 20px; line-height: 1.3; display: none; padding-left: 10px; border-left: 1px solid #222; max-width: 180px; }
+        .nav-link.active + .rubrique-desc { display: block; }
 
-        .meta { display: flex; justify-content: space-between; font-size: 8px; letter-spacing: 2px; color: rgba(255,255,255,0.3); text-transform: uppercase; }
-        .meta h3 { font-family: 'Playfair Display', serif; font-size: 15px; color: #fff; text-transform: none; font-style: italic; }
+        /* Zone de contenu */
+        .main-content { padding: 40px 40px 40px 280px; min-height: 100vh; }
+        .intro-header { font-size: 14px; color: var(--dim); margin-bottom: 80px; font-style: italic; max-width: 450px; }
 
-        /* Viewer */
-        .viewer { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; display: none; opacity: 0; transition: 0.5s; align-items: center; justify-content: center; backdrop-filter: blur(15px); }
-        .viewer.show { display: flex; opacity: 1; }
-        .viewer img { max-width: 85%; max-height: 80%; object-fit: contain; }
-        .viewer-close { position: absolute; top: 30px; right: 40px; background: none; border: none; }
-        .viewer-close img { width: 45px; filter: invert(1); opacity: 0.5; }
+        /* Titres de sections déstructurés */
+        .section-anchor { padding-top: 100px; margin-top: -50px; }
+        .section-title { font-family: 'VT323', monospace; font-size: 14px; color: #222; text-transform: uppercase; letter-spacing: 8px; border-bottom: 1px solid #111; padding-bottom: 10px; margin-bottom: 40px; }
+        
+        /* Grille Magazine */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 60px; margin-bottom: 150px; }
+        
+        /* Cartes Photo/Vidéo */
+        .item-card { position: relative; transition: 0.4s; }
+        .media-holder { width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #050505; border: 1px solid #151515; margin-bottom: 15px; position: relative; }
+        .media-holder img, .media-holder video { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0); transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1); }
+        .item-card:hover .media-holder img { transform: scale(1.03); }
 
-        /* Mobile Fix */
+        /* Infos techniques style magazine vintage */
+        .meta-data { font-family: 'VT323', monospace; color: #444; font-size: 14px; }
+        .meta-data h3 { color: #888; font-family: 'Special Elite', serif; font-size: 18px; margin-bottom: 4px; text-transform: uppercase; }
+
+        /* Message d'attente agréable */
+        .wait-msg { grid-column: 1/-1; padding: 40px 0; font-family: 'VT323', monospace; color: #252525; font-size: 20px; letter-spacing: 2px; }
+
+        /* Viewer Plein Écran & Loupe */
+        #viewer { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
+        #v-media { max-width: 90%; max-height: 90vh; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+        
+        #loupe { 
+            position: absolute; width: 220px; height: 220px; border-radius: 50%; 
+            pointer-events: none; display: none; z-index: 10001; 
+            background-repeat: no-repeat; box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        /* Responsive : les images ne touchent jamais les bords */
         @media (max-width: 1024px) {
-            .gallery-container { padding: 180px 25px 50px; }
-            nav { top: 100px; left: 25px; flex-direction: row; flex-wrap: wrap; }
-            header { left: 25px; }
-            .photo-card, .photo-card.featured { grid-column: span 12; }
-            #cursor-x { display: none; } * { cursor: auto !important; }
+            .main-content { padding: 180px 25px 40px 25px; }
+            nav { position: absolute; top: 90px; left: 25px; width: calc(100% - 50px); flex-direction: row; flex-wrap: wrap; gap: 15px; }
+            .rubrique-desc { display: none !important; }
+            .nav-link { font-size: 20px; }
+            .grid { gap: 40px; }
         }
     </style>
 </head>
 <body>
 
     <div class="film-grain"></div>
-    <div id="cursor-x" class="cursor-x"></div>
+    <div id="loupe"></div>
 
     <header>
         <a href="https://www.instagram.com/wbcht/" target="_blank">
-            <img src="https://i.imgur.com/ELW5rnM.png" class="logo-img" alt=".1538">
+            <img src="https://i.imgur.com/ELW5rnM.png" class="logo-img" alt="Logo">
         </a>
     </header>
 
-    <nav id="rubriques">
-        <button class="nav-link active" data-filter="tout">Journal</button>
-        <button class="nav-link" data-filter="Nantes">Nantes</button>
-        <button class="nav-link" data-filter="Rennes">Rennes</button>
-        <button class="nav-link" data-filter="Projets">Projets</button>
+    <nav id="menu">
+        <a href="#section-journal" class="nav-link active">Journal</a>
+        <div class="rubrique-desc">Dernières captures. L'instant brut, sans retouche d'âme.</div>
+
+        <a href="#section-eponyme" class="nav-link">Éponyme</a>
+        <div class="rubrique-desc">Interviews de l'ordinaire. Parce qu'aucun métier ne vaut moins qu'un autre.</div>
+
+        <a href="#section-viewon" class="nav-link">View On</a>
+        <div class="rubrique-desc">"Je ne suis pas un modèle". Le cadre définit la scène, pas le sujet.</div>
+
+        <a href="#section-pomme" class="nav-link">Pomme</a>
+        <div class="rubrique-desc">Formats courts, parodies et génériques dynamiques.</div>
     </nav>
 
-    <main class="gallery-container">
-        <div class="grid" id="gallery"></div>
+    <main class="main-content">
+        <div class="intro-header">
+            .1538 / MAGAZINE VISUEL BRUT. <br>
+            L'esthétique de la banalité et du message positif.
+        </div>
+
+        <div id="section-journal" class="section-anchor">
+            <div class="section-title">01. JOURNAL / RÉCENT</div>
+            <div class="grid" id="grid-journal"></div>
+        </div>
+
+        <div id="section-eponyme" class="section-anchor">
+            <div class="section-title">02. ÉPONYME / INTERVIEWS</div>
+            <div class="grid" id="grid-eponyme"></div>
+        </div>
+
+        <div id="section-viewon" class="section-anchor">
+            <div class="section-title">03. VIEW ON / CADRE BLANC</div>
+            <div class="grid" id="grid-viewon"></div>
+        </div>
+
+        <div id="section-pomme" class="section-anchor">
+            <div class="section-title">04. POMME / PROJETS</div>
+            <div class="grid" id="grid-pomme"></div>
+        </div>
     </main>
 
-    <div class="viewer" id="viewer" onclick="closeV()">
-        <button class="viewer-close"><img src="boit.png"></button>
-        <img id="v-img" src="">
+    <div id="viewer" onclick="closeViewer()">
+        <div id="v-container" style="position: relative;"></div>
     </div>
-
-    <a href="https://www.canva.com/design/DAHAFL_cLYw/kMb0fK9BdG6mAeRzYDpZLQ/edit" target="_blank" class="btn-canva">
-        <img src="https://i.imgur.com/5kSQU8s.png" class="canva-icon-custom" alt="Documentation">
-    </a>
 
     <script>
         let db = [];
-        const gallery = document.getElementById('gallery');
-        const cursor = document.getElementById('cursor-x');
 
-        async function init() {
+        async function start() {
             try {
                 const res = await fetch('images.json');
                 db = await res.json();
-                render(db);
-            } catch (e) { console.error("Erreur JSON"); }
+                renderAll();
+            } catch (e) { console.error("Erreur de base de données."); }
         }
 
-        function render(data) {
-            gallery.innerHTML = data.map((img, i) => `
-                <div class="photo-card ${img.featured ? 'featured' : ''}" onclick="openV('${img.url}')">
-                    <div class="img-box"><img src="${img.url}" loading="lazy"></div>
-                    <div class="meta">
-                        <h3>${img.titre}</h3>
-                        <span>${img.lieu}</span>
-                    </div>
-                </div>
-            `).join('');
-            setTimeout(() => document.querySelectorAll('.photo-card').forEach(c => c.classList.add('visible')), 100);
+        function renderAll() {
+            const config = [
+                { id: 'grid-journal', filter: 'tout' },
+                { id: 'grid-eponyme', filter: 'Eponyme' },
+                { id: 'grid-viewon', filter: 'View On' },
+                { id: 'grid-pomme', filter: 'Pomme' }
+            ];
+
+            config.forEach(conf => {
+                const container = document.getElementById(conf.id);
+                const items = conf.filter === 'tout' ? db : db.filter(i => i.rubrique === conf.filter);
+                
+                if (items.length === 0) {
+                    container.innerHTML = `<div class="wait-msg">[ LE TRAVAIL ARRIVE BIENTÔT ICI, PATIENTEZ... ]</div>`;
+                } else {
+                    container.innerHTML = items.map(p => `
+                        <div class="item-card" onclick="openFull(event, '${p.url}')">
+                            <div class="media-holder">
+                                ${p.url.endsWith('.mp4') ? 
+                                    `<video src="${p.url}" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>` : 
+                                    `<img src="${p.url}" loading="lazy">`}
+                            </div>
+                            <div class="meta-data">
+                                <h3>${p.titre}</h3>
+                                <div>${p.lieu} — ${p.iso} ${p.focale} ${p.ouverture}</div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            });
         }
 
-        document.getElementById('rubriques').addEventListener('click', e => {
-            if(!e.target.classList.contains('nav-link')) return;
-            document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            const f = e.target.dataset.filter;
-            render(f === 'tout' ? db : db.filter(i => i.rubrique === f));
-        });
-
-        function openV(url) {
-            document.getElementById('v-img').src = url;
-            document.getElementById('viewer').style.display = 'flex';
-            setTimeout(() => document.getElementById('viewer').classList.add('show'), 10);
+        function openFull(e, url) {
+            e.stopPropagation();
+            const viewer = document.getElementById('viewer');
+            const container = document.getElementById('v-container');
+            viewer.style.display = 'flex';
+            
+            if(url.endsWith('.mp4')) {
+                container.innerHTML = `<video id="v-media" src="${url}" controls autoplay></video>`;
+                document.getElementById('loupe').style.display = 'none';
+            } else {
+                container.innerHTML = `<img id="v-media" src="${url}">`;
+                initLoupe(url);
+            }
         }
 
-        function closeV() {
-            document.getElementById('viewer').classList.remove('show');
-            setTimeout(() => document.getElementById('viewer').style.display = 'none', 500);
+        function closeViewer() {
+            document.getElementById('viewer').style.display = 'none';
+            document.getElementById('loupe').style.display = 'none';
         }
 
-        document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+        function initLoupe(url) {
+            const media = document.getElementById('v-media');
+            const loupe = document.getElementById('loupe');
+            media.onmousemove = (e) => {
+                loupe.style.display = 'block';
+                const rect = media.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                loupe.style.left = (e.clientX - 110) + 'px';
+                loupe.style.top = (e.clientY - 110) + 'px';
+                loupe.style.backgroundImage = `url('${url}')`;
+                const z = 2.8; // Niveau de zoom
+                loupe.style.backgroundSize = (rect.width * z) + 'px';
+                loupe.style.backgroundPosition = `-${(x * z) - 110}px -${(y * z) - 110}px`;
+            };
+        }
 
-        init();
+        // Détection de la section au scroll
+        window.onscroll = () => {
+            let current = "";
+            document.querySelectorAll('.section-anchor').forEach(s => {
+                if (pageYOffset >= s.offsetTop - 300) current = s.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.classList.remove('active');
+                if (l.getAttribute('href').includes(current)) l.classList.add('active');
+            });
+        };
+
+        start();
     </script>
 </body>
 </html>

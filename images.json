@@ -4,95 +4,79 @@
         "url": "https://i.imgur.com/DsMMmci.jpeg",
         "titre": "Vélobylette",
         "lieu": "Nantes",
-        "rubrique": "Nantes",
+        "rubrique": "Pomme",
         "iso": "ISO 6400",
         "focale": "27mm",
-        "ouverture": "f/4",
-        "featured": true,
-        "description": "Je me baladais à Rennes quand je suis tombé sur cet engin..."
+        "ouverture": "f/4"
     },
     {
         "id": "pantin",
         "url": "https://i.imgur.com/KZBmKTa.jpeg",
         "titre": "Pinocchio",
         "lieu": "Rennes",
-        "rubrique": "Rennes",
+        "rubrique": "Pomme",
         "iso": "ISO 6400",
         "focale": "157mm",
-        "ouverture": "f/4",
-        "featured": false,
-        "description": "Souvent, on est nous, parfois on est un pantin..."
+        "ouverture": "f/4"
     },
     {
         "id": "femme",
         "url": "https://i.imgur.com/gepkOBg.jpeg",
         "titre": "Yveline",
         "lieu": "Place Royale",
-        "rubrique": "Nantes",
+        "rubrique": "Pomme",
         "iso": "ISO 200",
         "focale": "156mm",
-        "ouverture": "f/4",
-        "featured": false,
-        "description": "J’ai passé dix minutes à discuter de la vie..."
+        "ouverture": "f/4"
     },
     {
         "id": "semelle",
         "url": "https://i.imgur.com/jLwJf2V.jpeg",
         "titre": "Pas à pas",
         "lieu": "Nantes",
-        "rubrique": "Nantes",
+        "rubrique": "Pomme",
         "iso": "ISO 100",
         "focale": "27mm",
-        "ouverture": "f/7.1",
-        "featured": false,
-        "description": "Il à commencé sa journée du mauvais pied..."
+        "ouverture": "f/7.1"
     },
     {
         "id": "chocolaterie",
         "url": "https://i.imgur.com/2hbnTJ5.jpeg",
         "titre": "EUR",
         "lieu": "Rue de Nantes",
-        "rubrique": "Nantes",
+        "rubrique": "Pomme",
         "iso": "ISO 100",
         "focale": "27mm",
-        "ouverture": "f/4.5",
-        "featured": true,
-        "description": "Nantes, un jour de pluie..."
+        "ouverture": "f/4.5"
     },
     {
         "id": "mains",
         "url": "https://i.imgur.com/e24W0q6.jpeg",
         "titre": "Signataire",
         "lieu": "Soirée",
-        "rubrique": "Projets",
+        "rubrique": "Pomme",
         "iso": "ISO 6400",
         "focale": "157mm",
-        "ouverture": "f/4",
-        "featured": false,
-        "description": "On signe tous nos vies de petits gestes..."
+        "ouverture": "f/4"
     },
     {
         "id": "chemin",
         "url": "https://i.imgur.com/4WeEEtI.jpeg",
         "titre": "Frêle et froid",
         "lieu": "Gare SNCF",
-        "rubrique": "Nantes",
+        "rubrique": "Pomme",
         "iso": "ISO 6400",
         "focale": "27mm",
-        "ouverture": "f/4",
-        "featured": true,
-        "description": "La gare de Nantes un soir de neige..."
+        "ouverture": "f/4"
     },
     {
         "id": "silhouette",
         "url": "https://i.imgur.com/mLBTNWJ.jpeg",
         "titre": "Le Passant",
         "lieu": "Nantes",
-        "rubrique": "Nantes",
+        "rubrique": "Pomme",
         "iso": "ISO 6400",
         "focale": "157mm",
-        "ouverture": "f/4",
-        "featured": false,
-        "description": "On est tous le passant de quelqu’un d’autre..."
+        "ouverture": "f/4"
     }
 ]

@@ -12,26 +12,28 @@ def save_db(data):
     with open(DB_FILE, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
-def add_photo(id, url, titre, lieu, rubrique, featured=False, description=""):
+def add_project(id, url, titre, lieu, rubrique="Pomme", iso="ISO 100", focale="35mm", ouverture="f/2.8"):
+    """
+    Rubriques autorisées : 'Eponyme', 'View On', 'Pomme'
+    """
     db = load_db()
-    # On évite les doublons d'ID
+    # Remplacement si l'ID existe déjà pour éviter les doublons
     db = [i for i in db if i['id'] != id]
+    
     db.append({
-        "id": id, "url": url, "titre": titre, "lieu": lieu, 
-        "rubrique": rubrique, "featured": featured, "description": description
+        "id": id,
+        "url": url,
+        "titre": titre,
+        "lieu": lieu,
+        "rubrique": rubrique,
+        "iso": iso,
+        "focale": focale,
+        "ouverture": ouverture
     })
+    
     save_db(db)
-    print(f"✅ Projet '{titre}' ajouté avec succès.")
+    print(f"✅ Projet '{titre}' ajouté avec succès dans la rubrique [{rubrique}].")
 
-def delete_photo(photo_id):
-    db = load_db()
-    db = [i for i in db if i['id'] != photo_id]
-    save_db(db)
-    print(f"❌ Photo '{photo_id}' supprimée.")
-
-# --- COMMENT UTILISER ---
-# Pour ajouter une photo :
-# add_photo("nantes_nuit", "https://i.imgur.com/...", "Nantes Nuit", "Nantes", "Nantes", featured=True)
-
-# Pour supprimer une photo :
-# delete_photo("velo")
+# --- MODE D'EMPLOI ---
+# Pour ajouter une photo ou vidéo :
+# add_project("interview_01", "lien_video.mp4", "L'Artisan", "Nantes", rubrique="Eponyme")
