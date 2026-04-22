@@ -14,7 +14,7 @@ def save_db(data):
 
 def add_photo(id, url, titre, lieu, rubrique="Pomme", iso="ISO 100", focale="35mm", ouverture="f/2.8"):
     """
-    Rubriques : 'View On', 'Eponyme', 'Pomme'
+    Rubriques valides : 'Journal', 'View On', 'Eponyme', 'Pomme'
     """
     db = load_db()
     db = [i for i in db if i['id'] != id]
@@ -24,4 +24,4 @@ def add_photo(id, url, titre, lieu, rubrique="Pomme", iso="ISO 100", focale="35m
         "ouverture": ouverture
     })
     save_db(db)
-    print(f"✅ Ajouté à {rubrique}.")
+    print(f"✅ Élément '{titre}' ajouté avec succès.")
