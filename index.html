@@ -6,69 +6,90 @@
     <title>.1538 | MAGAZINE BRUT</title>
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #0a0a0a; --text: #e0e0e0; --accent: #fff; --grey: #333; --dim: #666; }
+        :root { --bg: #000; --text: #e0e0e0; --accent: #fff; --dim: #555; }
         
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
         html { scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text); font-family: 'Special Elite', serif; overflow-x: hidden; }
+        body { background: var(--bg); color: var(--text); font-family: 'Special Elite', serif; overflow-x: hidden; position: relative; }
 
-        /* Superposition de grain de film vintage */
-        .film-grain { position: fixed; inset: 0; background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Overlay.png"); opacity: 0.1; pointer-events: none; z-index: 9999; }
+        /* Effet Étoiles Discret */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(1px 1px at 10% 20%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 30% 50%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 50% 10%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 80% 80%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 90% 30%, #fff, rgba(0,0,0,0));
+            background-size: 250px 250px;
+            opacity: 0.15;
+            z-index: -1;
+            animation: stars-twinkle 10s infinite alternate;
+        }
+        @keyframes stars-twinkle { from { opacity: 0.1; } to { opacity: 0.25; } }
 
-        /* Navigation fixe à gauche */
+        .film-grain { position: fixed; inset: 0; background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Overlay.png"); opacity: 0.08; pointer-events: none; z-index: 9999; }
+
         header { position: fixed; top: 25px; left: 30px; z-index: 1000; }
-        .logo-img { height: 55px; filter: invert(1); transition: transform 0.3s; }
-        .logo-img:hover { transform: rotate(-2deg) scale(1.05); }
+        .logo-img { height: 50px; filter: invert(1); }
         
-        nav { position: fixed; top: 120px; left: 30px; z-index: 1000; width: 220px; display: flex; flex-direction: column; }
-        .nav-link { color: var(--grey); text-decoration: none; font-family: 'VT323', monospace; font-size: 28px; text-transform: uppercase; transition: 0.3s; padding: 5px 0; letter-spacing: 1px; }
-        .nav-link:hover, .nav-link.active { color: var(--accent); transform: translateX(8px); }
-
-        /* Descriptions courtes sous menu actif */
-        .rubrique-desc { font-size: 11px; color: var(--dim); margin-bottom: 20px; line-height: 1.3; display: none; padding-left: 10px; border-left: 1px solid #222; max-width: 180px; }
+        nav { position: fixed; top: 110px; left: 30px; z-index: 1000; width: 220px; display: flex; flex-direction: column; }
+        .nav-link { color: #444; text-decoration: none; font-family: 'VT323', monospace; font-size: 26px; text-transform: uppercase; transition: 0.3s; padding: 5px 0; }
+        .nav-link:hover, .nav-link.active { color: var(--accent); transform: skewX(-5deg); }
+        .rubrique-desc { font-size: 11px; color: var(--dim); margin-bottom: 20px; display: none; padding-left: 10px; border-left: 1px solid #222; }
         .nav-link.active + .rubrique-desc { display: block; }
 
-        /* Zone de contenu */
+        /* Bouton Canva Style Original */
+        .btn-canva { position: fixed; bottom: 30px; right: 40px; z-index: 9999; transition: 0.3s ease; }
+        .canva-icon-custom { width: 60px; height: auto; transition: 0.3s ease; }
+        .btn-canva:hover .canva-icon-custom { transform: scale(1.1) rotate(5deg); filter: drop-shadow(0 0 10px #4da6ff); }
+
+        /* Contenu Principal */
         .main-content { padding: 40px 40px 40px 280px; min-height: 100vh; }
-        .intro-header { font-size: 14px; color: var(--dim); margin-bottom: 80px; font-style: italic; max-width: 450px; }
+        .intro { font-size: 13px; color: var(--dim); margin-bottom: 60px; max-width: 400px; border-top: 1px solid #111; padding-top: 10px; font-style: italic; }
 
-        /* Titres de sections déstructurés */
-        .section-anchor { padding-top: 100px; margin-top: -50px; }
-        .section-title { font-family: 'VT323', monospace; font-size: 14px; color: #222; text-transform: uppercase; letter-spacing: 8px; border-bottom: 1px solid #111; padding-bottom: 10px; margin-bottom: 40px; }
-        
-        /* Grille Magazine */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 60px; margin-bottom: 150px; }
-        
-        /* Cartes Photo/Vidéo */
-        .item-card { position: relative; transition: 0.4s; }
-        .media-holder { width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #050505; border: 1px solid #151515; margin-bottom: 15px; position: relative; }
-        .media-holder img, .media-holder video { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0); transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1); }
-        .item-card:hover .media-holder img { transform: scale(1.03); }
+        .section-anchor { margin-bottom: 120px; }
+        .section-title { font-family: 'VT323', monospace; font-size: 16px; color: #111; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 30px; border-bottom: 1px solid #111; }
 
-        /* Infos techniques style magazine vintage */
-        .meta-data { font-family: 'VT323', monospace; color: #444; font-size: 14px; }
-        .meta-data h3 { color: #888; font-family: 'Special Elite', serif; font-size: 18px; margin-bottom: 4px; text-transform: uppercase; }
+        /* Grille Masonry (BD / Magazine déstructuré) */
+        .grid { 
+            column-count: 2; 
+            column-gap: 40px; 
+        }
+        @media (max-width: 1400px) { .grid { column-count: 2; } }
+        @media (max-width: 800px) { .grid { column-count: 1; } }
 
-        /* Message d'attente agréable */
-        .wait-msg { grid-column: 1/-1; padding: 40px 0; font-family: 'VT323', monospace; color: #252525; font-size: 20px; letter-spacing: 2px; }
+        .item-card { 
+            break-inside: avoid; 
+            margin-bottom: 60px; 
+            background: rgba(0,0,0,0.4);
+            padding: 15px;
+            border: 1px solid #111;
+            transition: 0.4s;
+        }
+        .item-card:hover { border-color: #333; transform: translateY(-5px); background: rgba(10,10,10,0.8); }
 
-        /* Viewer Plein Écran & Loupe */
-        #viewer { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
-        #v-media { max-width: 90%; max-height: 90vh; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
-        
-        #loupe { 
-            position: absolute; width: 220px; height: 220px; border-radius: 50%; 
-            pointer-events: none; display: none; z-index: 10001; 
-            background-repeat: no-repeat; box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        .media-holder { width: 100%; margin-bottom: 15px; }
+        .media-holder img, .media-holder video { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+            object-fit: contain; /* Image entière, pas de zoom */
         }
 
-        /* Responsive : les images ne touchent jamais les bords */
+        .meta { font-family: 'VT323', monospace; color: #444; font-size: 14px; }
+        .meta h3 { color: #aaa; font-family: 'Special Elite', serif; font-size: 18px; margin-bottom: 4px; }
+
+        /* Viewer & Loupe */
+        #viewer { position: fixed; inset: 0; background: rgba(0,0,0,0.99); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(15px); }
+        #v-media { max-width: 95vw; max-height: 95vh; object-fit: contain; }
+        #loupe { position: absolute; width: 220px; height: 220px; border-radius: 50%; pointer-events: none; display: none; z-index: 10001; background-repeat: no-repeat; box-shadow: 0 0 40px rgba(0,0,0,0.8); }
+
         @media (max-width: 1024px) {
-            .main-content { padding: 180px 25px 40px 25px; }
-            nav { position: absolute; top: 90px; left: 25px; width: calc(100% - 50px); flex-direction: row; flex-wrap: wrap; gap: 15px; }
-            .rubrique-desc { display: none !important; }
-            .nav-link { font-size: 20px; }
-            .grid { gap: 40px; }
+            .main-content { padding: 180px 25px 80px 25px; }
+            nav { position: absolute; top: 90px; left: 25px; flex-direction: row; flex-wrap: wrap; width: calc(100% - 50px); gap: 15px; }
         }
     </style>
 </head>
@@ -83,85 +104,82 @@
         </a>
     </header>
 
-    <nav id="menu">
+    <nav>
         <a href="#section-journal" class="nav-link active">Journal</a>
-        <div class="rubrique-desc">Dernières captures. L'instant brut, sans retouche d'âme.</div>
+        <div class="rubrique-desc">Archives brutes du quotidien.</div>
 
         <a href="#section-eponyme" class="nav-link">Éponyme</a>
-        <div class="rubrique-desc">Interviews de l'ordinaire. Parce qu'aucun métier ne vaut moins qu'un autre.</div>
+        <div class="rubrique-desc">Interviews de l'ordinaire. La banalité extraordinaire.</div>
 
         <a href="#section-viewon" class="nav-link">View On</a>
-        <div class="rubrique-desc">"Je ne suis pas un modèle". Le cadre définit la scène, pas le sujet.</div>
+        <div class="rubrique-desc">"Je ne suis pas un modèle". Focus sur l'environnement.</div>
 
         <a href="#section-pomme" class="nav-link">Pomme</a>
-        <div class="rubrique-desc">Formats courts, parodies et génériques dynamiques.</div>
+        <div class="rubrique-desc">Formats courts et détournements parodiques.</div>
     </nav>
 
+    <a href="https://www.canva.com/design/DAHAFL_cLYw/kMb0fK9BdG6mAeRzYDpZLQ/edit" target="_blank" class="btn-canva">
+        <img src="https://i.imgur.com/5kSQU8s.png" class="canva-icon-custom" alt="Documentation">
+    </a>
+
     <main class="main-content">
-        <div class="intro-header">
-            .1538 / MAGAZINE VISUEL BRUT. <br>
-            L'esthétique de la banalité et du message positif.
-        </div>
+        <div class="intro">.1538 / MAGAZINE VISUEL / BRUT & VINTAGE</div>
 
         <div id="section-journal" class="section-anchor">
-            <div class="section-title">01. JOURNAL / RÉCENT</div>
+            <div class="section-title">01 // JOURNAL</div>
             <div class="grid" id="grid-journal"></div>
         </div>
 
         <div id="section-eponyme" class="section-anchor">
-            <div class="section-title">02. ÉPONYME / INTERVIEWS</div>
+            <div class="section-title">02 // EPONYME</div>
             <div class="grid" id="grid-eponyme"></div>
         </div>
 
         <div id="section-viewon" class="section-anchor">
-            <div class="section-title">03. VIEW ON / CADRE BLANC</div>
+            <div class="section-title">03 // VIEW ON</div>
             <div class="grid" id="grid-viewon"></div>
         </div>
 
         <div id="section-pomme" class="section-anchor">
-            <div class="section-title">04. POMME / PROJETS</div>
+            <div class="section-title">04 // POMME</div>
             <div class="grid" id="grid-pomme"></div>
         </div>
     </main>
 
-    <div id="viewer" onclick="closeViewer()">
+    <div id="viewer" onclick="closeV()">
         <div id="v-container" style="position: relative;"></div>
     </div>
 
     <script>
-        let db = [];
+        let data = [];
 
-        async function start() {
-            try {
-                const res = await fetch('images.json');
-                db = await res.json();
-                renderAll();
-            } catch (e) { console.error("Erreur de base de données."); }
+        async function init() {
+            const res = await fetch('images.json');
+            data = await res.json();
+            render();
         }
 
-        function renderAll() {
-            const config = [
+        function render() {
+            const sections = [
                 { id: 'grid-journal', filter: 'tout' },
                 { id: 'grid-eponyme', filter: 'Eponyme' },
                 { id: 'grid-viewon', filter: 'View On' },
                 { id: 'grid-pomme', filter: 'Pomme' }
             ];
 
-            config.forEach(conf => {
-                const container = document.getElementById(conf.id);
-                const items = conf.filter === 'tout' ? db : db.filter(i => i.rubrique === conf.filter);
+            sections.forEach(s => {
+                const container = document.getElementById(s.id);
+                const items = s.filter === 'tout' ? data : data.filter(i => i.rubrique === s.filter);
                 
                 if (items.length === 0) {
-                    container.innerHTML = `<div class="wait-msg">[ LE TRAVAIL ARRIVE BIENTÔT ICI, PATIENTEZ... ]</div>`;
+                    container.innerHTML = `<div style="font-family: 'VT323', monospace; color: #1a1a1a; font-size: 18px; padding: 20px 0;">[ LE TRAVAIL ARRIVE BIENTÔT ]</div>`;
                 } else {
                     container.innerHTML = items.map(p => `
-                        <div class="item-card" onclick="openFull(event, '${p.url}')">
+                        <div class="item-card" onclick="openV(event, '${p.url}')">
                             <div class="media-holder">
-                                ${p.url.endsWith('.mp4') ? 
-                                    `<video src="${p.url}" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>` : 
-                                    `<img src="${p.url}" loading="lazy">`}
+                                ${p.url.endsWith('.mp4') ? `<video src="${p.url}" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>` : `<img src="${p.url}" loading="lazy">`}
                             </div>
-                            <div class="meta-data">
+                            <div class="meta">
                                 <h3>${p.titre}</h3>
                                 <div>${p.lieu} — ${p.iso} ${p.focale} ${p.ouverture}</div>
                             </div>
@@ -171,57 +189,51 @@
             });
         }
 
-        function openFull(e, url) {
+        function openV(e, url) {
             e.stopPropagation();
-            const viewer = document.getElementById('viewer');
-            const container = document.getElementById('v-container');
-            viewer.style.display = 'flex';
-            
+            const v = document.getElementById('viewer');
+            v.style.display = 'flex';
+            const c = document.getElementById('v-container');
             if(url.endsWith('.mp4')) {
-                container.innerHTML = `<video id="v-media" src="${url}" controls autoplay></video>`;
-                document.getElementById('loupe').style.display = 'none';
+                c.innerHTML = `<video id="v-media" src="${url}" controls autoplay></video>`;
             } else {
-                container.innerHTML = `<img id="v-media" src="${url}">`;
-                initLoupe(url);
+                c.innerHTML = `<img id="v-media" src="${url}">`;
+                setupLoupe(url);
             }
         }
 
-        function closeViewer() {
+        function closeV() {
             document.getElementById('viewer').style.display = 'none';
             document.getElementById('loupe').style.display = 'none';
         }
 
-        function initLoupe(url) {
-            const media = document.getElementById('v-media');
-            const loupe = document.getElementById('loupe');
-            media.onmousemove = (e) => {
-                loupe.style.display = 'block';
-                const rect = media.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                loupe.style.left = (e.clientX - 110) + 'px';
-                loupe.style.top = (e.clientY - 110) + 'px';
-                loupe.style.backgroundImage = `url('${url}')`;
-                const z = 2.8; // Niveau de zoom
-                loupe.style.backgroundSize = (rect.width * z) + 'px';
-                loupe.style.backgroundPosition = `-${(x * z) - 110}px -${(y * z) - 110}px`;
+        function setupLoupe(url) {
+            const m = document.getElementById('v-media');
+            const l = document.getElementById('loupe');
+            m.onmousemove = (e) => {
+                l.style.display = 'block';
+                const r = m.getBoundingClientRect();
+                const x = e.clientX - r.left;
+                const y = e.clientY - r.top;
+                l.style.left = (e.clientX - 110) + 'px';
+                l.style.top = (e.clientY - 110) + 'px';
+                l.style.backgroundImage = `url('${url}')`;
+                l.style.backgroundSize = (r.width * 2.8) + 'px';
+                l.style.backgroundPosition = `-${(x * 2.8) - 110}px -${(y * 2.8) - 110}px`;
             };
         }
 
-        // Détection de la section au scroll
         window.onscroll = () => {
-            let current = "";
             document.querySelectorAll('.section-anchor').forEach(s => {
-                if (pageYOffset >= s.offsetTop - 300) current = s.getAttribute('id');
-            });
-            document.querySelectorAll('.nav-link').forEach(l => {
-                l.classList.remove('active');
-                if (l.getAttribute('href').includes(current)) l.classList.add('active');
+                if (pageYOffset >= s.offsetTop - 300) {
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    const link = document.querySelector(`.nav-link[href="#${s.id}"]`);
+                    if(link) link.classList.add('active');
+                }
             });
         };
 
-        start();
+        init();
     </script>
 </body>
 </html>

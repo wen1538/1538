@@ -12,28 +12,13 @@ def save_db(data):
     with open(DB_FILE, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
-def add_project(id, url, titre, lieu, rubrique="Pomme", iso="ISO 100", focale="35mm", ouverture="f/2.8"):
-    """
-    Rubriques autorisées : 'Eponyme', 'View On', 'Pomme'
-    """
+def add_photo(id, url, titre, lieu, rubrique="Pomme", iso="ISO 100", focale="35mm", ouverture="f/2.8"):
     db = load_db()
-    # Remplacement si l'ID existe déjà pour éviter les doublons
     db = [i for i in db if i['id'] != id]
-    
     db.append({
-        "id": id,
-        "url": url,
-        "titre": titre,
-        "lieu": lieu,
-        "rubrique": rubrique,
-        "iso": iso,
-        "focale": focale,
+        "id": id, "url": url, "titre": titre, "lieu": lieu, 
+        "rubrique": rubrique, "iso": iso, "focale": focale, 
         "ouverture": ouverture
     })
-    
     save_db(db)
-    print(f"✅ Projet '{titre}' ajouté avec succès dans la rubrique [{rubrique}].")
-
-# --- MODE D'EMPLOI ---
-# Pour ajouter une photo ou vidéo :
-# add_project("interview_01", "lien_video.mp4", "L'Artisan", "Nantes", rubrique="Eponyme")
+    print(f"✅ Projet '{titre}' ajouté avec succès.")
