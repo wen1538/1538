@@ -12,9 +12,9 @@ def save_db(data):
     with open(DB_FILE, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
-def add_photo(id, url, titre, lieu, rubrique="Journal", iso="ISO 100", focale="35mm", ouverture="f/2.8"):
+def add_photo(id, url, titre, lieu, rubrique="Pomme", iso="ISO 100", focale="35mm", ouverture="f/2.8"):
     """
-    Rubriques autorisées : 'Journal', 'Eponyme', 'View On', 'Pomme'
+    Rubriques : 'View On', 'Eponyme', 'Pomme'
     """
     db = load_db()
     db = [i for i in db if i['id'] != id]
@@ -24,10 +24,4 @@ def add_photo(id, url, titre, lieu, rubrique="Journal", iso="ISO 100", focale="3
         "ouverture": ouverture
     })
     save_db(db)
-    print(f"✅ Projet '{titre}' ajouté avec succès dans la rubrique [{rubrique}].")
-
-def delete_photo(photo_id):
-    db = load_db()
-    db = [i for i in db if i['id'] != photo_id]
-    save_db(db)
-    print(f"❌ Photo '{photo_id}' supprimée.")
+    print(f"✅ Ajouté à {rubrique}.")

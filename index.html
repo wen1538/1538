@@ -7,82 +7,87 @@
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
     <style>
         :root { --bg: #000; --text: #e0e0e0; --accent: #fff; --dim: #555; }
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text); font-family: 'Special Elite', serif; overflow-x: hidden; position: relative; }
-
-        /* Effet Étoiles Discret */
-        body::before {
-            content: ""; position: fixed; inset: 0;
-            background: 
-                radial-gradient(1px 1px at 10% 20%, #fff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 30% 50%, #fff, rgba(0,0,0,0)),
-                radial-gradient(1.5px 1.5px at 50% 10%, #fff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 80% 80%, #fff, rgba(0,0,0,0)),
-                radial-gradient(1px 1px at 90% 30%, #fff, rgba(0,0,0,0));
-            background-size: 250px 250px; opacity: 0.15; z-index: -1;
-            animation: stars-twinkle 10s infinite alternate;
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'Special Elite', serif; 
+            overflow-x: hidden; 
+            position: relative;
         }
-        @keyframes stars-twinkle { from { opacity: 0.1; } to { opacity: 0.25; } }
 
-        .film-grain { position: fixed; inset: 0; background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Overlay.png"); opacity: 0.08; pointer-events: none; z-index: 9999; }
+        /* Décorations de fond imposantes mais discrètes */
+        .bg-deco {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.05; /* Très discret */
+            pointer-events: none;
+            filter: grayscale(1) invert(1);
+        }
+        #deco-obj { width: 40vw; bottom: -5%; left: -10%; transform: rotate(-15deg); }
+        #deco-boit { width: 30vw; top: 10%; right: -5%; transform: rotate(10deg); }
+
+        .film-grain { position: fixed; inset: 0; background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Overlay.png"); opacity: 0.06; pointer-events: none; z-index: 9999; }
 
         header { position: fixed; top: 25px; left: 30px; z-index: 1000; }
         .logo-img { height: 50px; filter: invert(1); }
         
         nav { position: fixed; top: 110px; left: 30px; z-index: 1000; width: 260px; display: flex; flex-direction: column; }
-        .nav-link { color: #444; text-decoration: none; font-family: 'VT323', monospace; font-size: 26px; text-transform: uppercase; transition: 0.3s; padding: 5px 0; }
+        .nav-link { color: #444; text-decoration: none; font-family: 'VT323', monospace; font-size: 26px; text-transform: uppercase; transition: 0.3s; padding: 5px 0; cursor: pointer; }
         .nav-link:hover, .nav-link.active { color: var(--accent); transform: skewX(-5deg); }
         
-        /* Descriptions des Rubriques */
         .rubrique-desc { font-size: 11px; color: var(--dim); margin-bottom: 20px; display: none; padding-left: 10px; border-left: 1px solid #222; line-height: 1.4; text-align: justify; }
         .nav-link.active + .rubrique-desc { display: block; }
 
-        /* Bouton Canva (Documentation) */
-        .btn-canva { position: fixed; bottom: 30px; right: 40px; z-index: 9999; transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); }
+        .btn-canva { position: fixed; bottom: 30px; right: 40px; z-index: 9999; }
         .canva-icon-custom { width: 60px; height: auto; transition: 0.3s ease; }
-        .btn-canva:hover .canva-icon-custom { transform: scale(1.1) rotate(5deg); filter: drop-shadow(0 0 10px #4da6ff); }
 
-        /* Contenu Principal */
         .main-content { padding: 40px 40px 40px 340px; min-height: 100vh; }
-        .intro { font-size: 13px; color: var(--dim); margin-bottom: 60px; max-width: 400px; border-top: 1px solid #111; padding-top: 10px; font-style: italic; }
+        
+        /* Texte de présentation corrigé */
+        .intro-manifeste { 
+            font-size: 14px; 
+            color: #888; 
+            margin-bottom: 80px; 
+            max-width: 650px; 
+            line-height: 1.8;
+            border-left: 2px solid #111;
+            padding-left: 25px;
+        }
+        .intro-manifeste b { color: var(--accent); }
 
         .section-anchor { margin-bottom: 150px; }
         .section-title { font-family: 'VT323', monospace; font-size: 16px; color: #111; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 40px; border-bottom: 1px solid #111; }
 
-        /* Grille Masonry (Style BD déstructuré) */
         .grid { column-count: 2; column-gap: 40px; }
-        @media (max-width: 1400px) { .grid { column-count: 2; } }
         @media (max-width: 900px) { .grid { column-count: 1; } }
 
-        .item-card { break-inside: avoid; margin-bottom: 60px; background: rgba(0,0,0,0.4); padding: 15px; border: 1px solid #111; transition: 0.4s; }
-        .item-card:hover { border-color: #333; transform: translateY(-5px); background: rgba(10,10,10,0.8); }
+        .item-card { break-inside: avoid; margin-bottom: 60px; background: rgba(0,0,0,0.6); padding: 15px; border: 1px solid #111; transition: 0.4s; cursor: pointer; }
+        .item-card:hover { border-color: #333; background: rgba(15,15,15,0.9); }
 
-        .media-holder { width: 100%; margin-bottom: 15px; }
-        .media-holder img, .media-holder video { width: 100%; height: auto; display: block; object-fit: contain; }
+        .media-holder img, .media-holder video { width: 100%; height: auto; display: block; }
 
-        .meta { font-family: 'VT323', monospace; color: #444; font-size: 14px; }
-        .meta h3 { color: #aaa; font-family: 'Special Elite', serif; font-size: 18px; margin-bottom: 4px; }
+        .meta { font-family: 'VT323', monospace; color: #444; font-size: 14px; margin-top: 10px; }
+        .meta h3 { color: #aaa; font-family: 'Special Elite', serif; font-size: 18px; }
 
-        .wait-msg { font-family: 'VT323', monospace; color: #222; font-size: 18px; padding: 20px 0; line-height: 1.5; }
+        .wait-msg { font-family: 'VT323', monospace; color: #333; font-size: 20px; padding: 40px 0; }
 
-        /* Viewer Plein Écran */
-        #viewer { position: fixed; inset: 0; background: rgba(0,0,0,0.99); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(15px); }
-        #v-media { max-width: 95vw; max-height: 95vh; object-fit: contain; }
-        #loupe { position: absolute; width: 220px; height: 220px; border-radius: 50%; pointer-events: none; display: none; z-index: 10001; background-repeat: no-repeat; box-shadow: 0 0 40px rgba(0,0,0,0.8); }
+        #viewer { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
+        #v-media { max-width: 90vw; max-height: 90vh; }
 
-        /* Mobile Fix */
         @media (max-width: 1024px) {
-            .main-content { padding: 240px 25px 80px 25px; }
-            nav { position: absolute; top: 90px; left: 25px; flex-direction: row; flex-wrap: wrap; width: calc(100% - 50px); gap: 10px; }
-            .rubrique-desc { display: none !important; }
+            .main-content { padding: 280px 25px 80px; }
+            nav { position: absolute; top: 90px; width: calc(100% - 50px); flex-direction: row; flex-wrap: wrap; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
     <div class="film-grain"></div>
-    <div id="loupe"></div>
+    
+    <img src="obj.png" id="deco-obj" class="bg-deco">
+    <img src="boit.png" id="deco-boit" class="bg-deco">
 
     <header>
         <a href="https://www.instagram.com/wbcht/" target="_blank">
@@ -90,30 +95,26 @@
         </a>
     </header>
 
-    <nav id="sidebar-nav">
+    <nav>
         <a href="#section-journal" class="nav-link active">Journal 📰</a>
-        <div class="rubrique-desc">Ici, vous trouverez les dernières actualités du site, toujours mises à jour pour que vous ne manquiez rien de ce qui se passe.</div>
+        <div class="rubrique-desc">L'essence du projet et mon parcours.</div>
 
         <a href="#section-viewon" class="nav-link">View On 👁️</a>
-        <div class="rubrique-desc">View On est une vue sur des non-sujets, là où le sujet de la photo est toujours une priorité. Je souhaite avoir des modèles prêts à poser dans des lieux qui reflètent une réalité plus proche de ce qu'on vit tous au quotidien... la beauté elle est si subjective, le modèle lui est là pour porter un message.</div>
+        <div class="rubrique-desc">Une immersion sur des non-sujets où l'authenticité prime.</div>
 
         <a href="#section-eponyme" class="nav-link">Éponyme 📸</a>
-        <div class="rubrique-desc">Éponyme, c’est le traitement de différents sujets sous des formats courts type interview ou micro-documentaire. N'hésitez pas à cliquer sur .1538 en haut à gauche pour me proposer de traiter des sujets qui vous intéressent.</div>
+        <div class="rubrique-desc">Formats courts et micro-documentaires thématiques.</div>
 
         <a href="#section-pomme" class="nav-link">Pomme 🍎</a>
-        <div class="rubrique-desc">Pomme est une petite rubrique où vous trouverez des photos simples qui mettent en évidence les différents sentiments que des lieux, des objets ou des modèles procurent. Pomme, c'est avant tout des marqueurs temporels qui ne visent aucune complexité.</div>
+        <div class="rubrique-desc">Sentiments et marqueurs temporels capturés dans l'instant.</div>
     </nav>
 
-    <a href="https://www.canva.com/design/DAHAFL_cLYw/kMb0fK9BdG6mAeRzYDpZLQ/edit" target="_blank" class="btn-canva">
-        <img src="https://i.imgur.com/5kSQU8s.png" class="canva-icon-custom" alt="Documentation">
-    </a>
-
     <main class="main-content">
-        <div class="intro">.1538 / MAGAZINE VISUEL / BRUT & VINTAGE</div>
-
-        <div id="section-journal" class="section-anchor">
-            <div class="section-title">01 // JOURNAL</div>
-            <div class="grid" id="grid-journal"></div>
+        <div class="intro-manifeste">
+            Salut, moi c'est <b>Wen</b>. J'ai 23 ans et je suis un jeune Nantais originaire de Quilly. <br><br>
+            Passionné par la photo et le montage, je cultive des intérêts divers que je souhaite exposer dans ce monde qui devient si <b>froid et impersonnel</b> à mesure que l'on avance. <br><br>
+            J'ai construit ce site moi-même pour illustrer les différentes facettes de ma vision. Il est encore en légère construction, mais chaque jour qui passe est une occasion de <b>faire mieux</b> et de montrer qui l'on est vraiment au fond. <br><br>
+            J'espère que mon travail vous plaira.
         </div>
 
         <div id="section-viewon" class="section-anchor">
@@ -132,8 +133,8 @@
         </div>
     </main>
 
-    <div id="viewer" onclick="closeV()">
-        <div id="v-container" style="position: relative;"></div>
+    <div id="viewer" onclick="this.style.display='none'">
+        <div id="v-container"></div>
     </div>
 
     <script>
@@ -144,12 +145,11 @@
                 const res = await fetch('images.json');
                 data = await res.json();
                 render();
-            } catch (e) { console.error("Erreur de chargement des données."); }
+            } catch (e) { console.error("Data error"); }
         }
 
         function render() {
             const sections = [
-                { id: 'grid-journal', filter: 'Journal', wait: "Le journal se remplit au fil des jours. Revenez vite." },
                 { id: 'grid-viewon', filter: 'View On', wait: "Ici, on attend les modèles qui n'en sont pas. Bientôt disponible." },
                 { id: 'grid-eponyme', filter: 'Eponyme', wait: "Les interviews sont en cours de montage. Restez connectés." },
                 { id: 'grid-pomme', filter: 'Pomme', wait: "En attendant que la pomme tombe, admirez le paysage." }
@@ -157,11 +157,10 @@
 
             sections.forEach(s => {
                 const container = document.getElementById(s.id);
-                // On filtre les items selon la rubrique exacte du JSON
                 const items = data.filter(i => i.rubrique === s.filter);
                 
                 if (items.length === 0) {
-                    container.innerHTML = `<div class="wait-msg">${s.wait}</div>`;
+                    container.innerHTML = `<div class="wait-msg">${s.wait} ⏳</div>`;
                 } else {
                     container.innerHTML = items.map(p => `
                         <div class="item-card" onclick="openV(event, '${p.url}')">
@@ -172,7 +171,7 @@
                             </div>
                             <div class="meta">
                                 <h3>${p.titre}</h3>
-                                <div>${p.lieu} — ${p.iso} ${p.focale} ${p.ouverture}</div>
+                                <div>${p.lieu} — ${p.iso} ${p.focale}</div>
                             </div>
                         </div>
                     `).join('');
@@ -185,42 +184,17 @@
             const v = document.getElementById('viewer');
             const c = document.getElementById('v-container');
             v.style.display = 'flex';
-            if(url.endsWith('.mp4')) {
-                c.innerHTML = `<video id="v-media" src="${url}" controls autoplay></video>`;
-            } else {
-                c.innerHTML = `<img id="v-media" src="${url}">`;
-                setupLoupe(url);
-            }
+            c.innerHTML = url.endsWith('.mp4') ? 
+                `<video id="v-media" src="${url}" controls autoplay></video>` : 
+                `<img id="v-media" src="${url}">`;
         }
 
-        function closeV() {
-            document.getElementById('viewer').style.display = 'none';
-            document.getElementById('loupe').style.display = 'none';
-        }
-
-        function setupLoupe(url) {
-            const m = document.getElementById('v-media');
-            const l = document.getElementById('loupe');
-            m.onmousemove = (e) => {
-                l.style.display = 'block';
-                const r = m.getBoundingClientRect();
-                const x = e.clientX - r.left;
-                const y = e.clientY - r.top;
-                l.style.left = (e.clientX - 110) + 'px';
-                l.style.top = (e.clientY - 110) + 'px';
-                l.style.backgroundImage = `url('${url}')`;
-                l.style.backgroundSize = (r.width * 2.8) + 'px';
-                l.style.backgroundPosition = `-${(x * 2.8) - 110}px -${(y * 2.8) - 110}px`;
-            };
-        }
-
-        // Détection du scroll pour mettre à jour le menu actif
         window.onscroll = () => {
             document.querySelectorAll('.section-anchor').forEach(s => {
-                if (window.pageYOffset >= s.offsetTop - 350) {
+                if (window.pageYOffset >= s.offsetTop - 400) {
                     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                    const activeLink = document.querySelector(`.nav-link[href="#${s.id}"]`);
-                    if(activeLink) activeLink.classList.add('active');
+                    const link = document.querySelector(`.nav-link[href="#${s.id}"]`);
+                    if(link) link.classList.add('active');
                 }
             });
         };
