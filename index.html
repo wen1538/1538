@@ -17,7 +17,7 @@
             position: relative;
         }
 
-        /* FOND ÉTOILÉ (Points légers en surbrillance) */
+        /* FOND ÉTOILÉ */
         body::before {
             content: ""; position: fixed; inset: 0;
             background: 
@@ -29,80 +29,69 @@
             background-size: 250px 250px; opacity: 0.15; z-index: -2;
         }
 
-        /* LISERÉS FLORAUX (Bords fins gauche/droite) */
-        .floral-line {
-            position: fixed; top: 0; bottom: 0; width: 30px;
-            z-index: 5; pointer-events: none; opacity: 0.2;
-            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png'); /* Texture papier brut */
-            border-left: 1px solid rgba(255,255,255,0.1);
-            border-right: 1px solid rgba(255,255,255,0.1);
+        /* DECO OBJ & BOIT (Disposition d'avant, en fond) */
+        .bg-deco {
+            position: fixed; z-index: -1; opacity: 0.05; pointer-events: none; filter: grayscale(1) invert(1);
         }
-        .line-left { left: 10px; }
-        .line-right { right: 10px; }
+        #deco-obj { width: 40vw; bottom: -5%; left: -10%; transform: rotate(-15deg); }
+        #deco-boit { width: 30vw; top: 10%; right: -5%; transform: rotate(10deg); }
 
         .film-grain { position: fixed; inset: 0; background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Overlay.png"); opacity: 0.05; pointer-events: none; z-index: 9999; }
 
-        header { position: fixed; top: 25px; left: 50px; z-index: 1000; }
+        header { position: fixed; top: 25px; left: 30px; z-index: 1000; }
         .logo-img { height: 50px; filter: invert(1); }
         
-        nav { position: fixed; top: 110px; left: 50px; z-index: 1000; width: 260px; display: flex; flex-direction: column; }
+        nav { position: fixed; top: 110px; left: 30px; z-index: 1000; width: 260px; display: flex; flex-direction: column; }
         .nav-link { color: #444; text-decoration: none; font-family: 'VT323', monospace; font-size: 26px; text-transform: uppercase; transition: 0.3s; padding: 5px 0; }
         .nav-link:hover, .nav-link.active { color: var(--accent); }
 
-        /* PRÉSENTATION CENTRALE */
-        .presentation-container { 
-            display: flex; align-items: center; justify-content: center; 
-            gap: 40px; margin: 40px 0 100px 0; max-width: 900px;
-        }
-        .deco-img { width: 120px; height: auto; opacity: 0.5; filter: grayscale(1) invert(1); }
+        .main-content { padding: 40px 40px 40px 340px; min-height: 100vh; }
 
-        .intro-text { 
-            flex: 1; font-size: 14px; color: #999; line-height: 1.8; text-align: justify;
-            border-top: 1px solid #222; border-bottom: 1px solid #222; padding: 25px 0;
+        /* TEXTE PRÉSENTATION */
+        .intro-manifeste { 
+            font-size: 14px; color: #888; margin-bottom: 80px; max-width: 650px; line-height: 1.8;
+            border-left: 2px solid #111; padding-left: 25px;
         }
-        .intro-text b { color: var(--accent); }
+        .intro-manifeste b { color: var(--accent); }
 
-        .main-content { padding: 40px 80px 40px 380px; min-height: 100vh; }
         .section-anchor { margin-bottom: 150px; }
-
-        /* TITRES ET DESCRIPTIONS CENTRALES */
+        
+        /* TITRES ET DESCRIPTIONS */
         .section-title { 
             font-family: 'VT323', monospace; font-size: 28px; color: var(--accent); 
             text-transform: uppercase; letter-spacing: 4px; font-weight: bold; margin-bottom: 10px;
         }
-        .section-desc {
+        .section-desc-central {
             font-size: 13px; color: #666; margin-bottom: 40px; line-height: 1.6; max-width: 750px; font-style: italic;
         }
 
         .grid { column-count: 2; column-gap: 40px; }
-        @media (max-width: 1200px) { .grid { column-count: 1; } }
+        @media (max-width: 900px) { .grid { column-count: 1; } }
 
         .item-card { break-inside: avoid; margin-bottom: 60px; background: rgba(0,0,0,0.5); padding: 15px; border: 1px solid #111; transition: 0.4s; cursor: pointer; }
-        .item-card:hover { border-color: #444; background: rgba(10,10,10,0.8); }
+        .item-card:hover { border-color: #333; background: rgba(15,15,15,0.9); }
 
-        .media-holder img, .media-holder video { width: 100%; height: auto; display: block; filter: grayscale(0.2); }
+        .media-holder img, .media-holder video { width: 100%; height: auto; display: block; }
 
-        .meta { font-family: 'VT323', monospace; color: #555; font-size: 14px; margin-top: 12px; }
-        .meta h3 { color: #aaa; font-family: 'Special Elite', serif; font-size: 19px; margin-bottom: 4px; }
+        .meta { font-family: 'VT323', monospace; color: #444; font-size: 14px; margin-top: 10px; }
+        .meta h3 { color: #aaa; font-family: 'Special Elite', serif; font-size: 18px; }
 
-        .wait-msg { font-family: 'VT323', monospace; color: #222; font-size: 22px; padding: 40px 0; }
+        .wait-msg { font-family: 'VT323', monospace; color: #333; font-size: 20px; padding: 40px 0; }
 
         #viewer { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 10000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
         #v-media { max-width: 90vw; max-height: 90vh; }
 
         @media (max-width: 1024px) {
-            .main-content { padding: 320px 40px 80px 40px; }
-            nav { position: absolute; top: 90px; left: 40px; flex-direction: row; flex-wrap: wrap; width: calc(100% - 80px); gap: 15px; }
-            .presentation-container { flex-direction: column; text-align: center; }
-            .deco-img { width: 80px; }
+            .main-content { padding: 280px 25px 80px; }
+            nav { position: absolute; top: 90px; width: calc(100% - 50px); flex-direction: row; flex-wrap: wrap; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
     <div class="film-grain"></div>
-    <div class="floral-line line-left"></div>
-    <div class="floral-line line-right"></div>
+    <img src="obj.png" id="deco-obj" class="bg-deco">
+    <img src="boit.png" id="deco-boit" class="bg-deco">
 
     <header>
         <a href="https://www.instagram.com/wbcht/" target="_blank">
@@ -118,45 +107,34 @@
     </nav>
 
     <main class="main-content">
-        <div class="presentation-container">
-            <img src="obj.png" class="deco-img" alt="">
-            <div class="intro-text">
-                Salut, moi c'est <b>Wen</b>. J'ai 23 ans, je suis un jeune Nantais originaire de Quilly. <br><br>
-                Je fais de la photo et du montage, porté par des passions diverses que j'aimerais exposer dans ce monde qui devient si <b>froid et impersonnel</b> à mesure que l'on avance. <br><br>
-                J'ai construit moi-même ce site pour les différentes facettes que je possède. Le site est encore en légère construction, mais chaque jour est une occasion de <b>faire mieux</b> et de montrer qui l'on est vraiment au fond. J'espère que mon travail vous plaira.
-            </div>
-            <img src="boit.png" class="deco-img" alt="">
+        <div class="intro-manifeste">
+            Salut, moi c'est <b>Wen</b>. J'ai 23 ans et je suis un jeune Nantais originaire de Quilly. <br><br>
+            Passionné par la photo et le montage, je cultive des intérêts divers que je souhaite exposer dans ce monde qui devient si <b>froid et impersonnel</b> à mesure que l'on avance. <br><br>
+            J'ai construit ce site moi-même pour illustrer les différentes facettes de ma vision. Il est encore en légère construction, mais chaque jour qui passe est une occasion de <b>faire mieux</b> et de montrer qui l'on est vraiment au fond. <br><br>
+            J'espère que mon travail vous plaira.
         </div>
 
         <div id="section-journal" class="section-anchor">
             <div class="section-title"><b>01 // JOURNAL 📰</b></div>
-            <div class="section-desc">
-                Ici, vous trouverez les dernières actualités du site, toujours mises à jour pour que vous ne manquiez rien de ce qui se passe.
-            </div>
+            <div class="section-desc-central">Ici, vous trouverez les dernières actualités du site, toujours mises à jour pour que vous ne manquiez rien de ce qui se passe.</div>
             <div class="grid" id="grid-journal"></div>
         </div>
 
         <div id="section-viewon" class="section-anchor">
             <div class="section-title"><b>02 // VIEW ON 👁️</b></div>
-            <div class="section-desc">
-                View On est une vue sur des non-sujets, là où le sujet de la photo est toujours une priorité. Je souhaite avoir des modèles prêts à poser dans des lieux qui reflètent une réalité plus proche de ce qu'on vit tous au quotidien. Si la misère est si belle 😉 et que la beauté elle est si subjective, le modèle lui est là pour porter un message.
-            </div>
+            <div class="section-desc-central">View On est une vue sur des non-sujets, là où le sujet de la photo est toujours une priorité. Je souhaite avoir des modèles prêts à poser dans des lieux qui reflètent une réalité plus proche de ce qu'on vit tous au quotidien. Si la misère est si belle et que la beauté elle est si subjective, le modèle lui est là pour porter un message, et créer un décalage n'est qu'une manière d'explorer le monde qui nous entoure.</div>
             <div class="grid" id="grid-viewon"></div>
         </div>
 
         <div id="section-eponyme" class="section-anchor">
             <div class="section-title"><b>03 // ÉPONYME 📸</b></div>
-            <div class="section-desc">
-                Éponyme, c’est le traitement de différents sujets sous des formats courts type interview ou micro-documentaire. N'hésitez pas à cliquer sur le logo .1538 en haut à gauche pour me proposer de traiter des sujets qui vous intéressent.
-            </div>
+            <div class="section-desc-central">Éponyme, c’est le traitement de différents sujets sous des formats courts type interview ou micro-documentaire. N'hésitez pas à cliquer sur .1538 en haut à gauche pour me proposer de traiter des sujets qui vous intéressent.</div>
             <div class="grid" id="grid-eponyme"></div>
         </div>
 
         <div id="section-pomme" class="section-anchor">
             <div class="section-title"><b>04 // POMME 🍎</b></div>
-            <div class="section-desc">
-                Pomme est une petite rubrique où vous trouverez des photos simples qui mettent en évidence les différents sentiments que des lieux, des objets ou des modèles procurent. J'ai appelé ça "Pomme" car elle représente une controverse ; c'est ce qui nous tombe dessus si on reste planté tel un pommier pour admirer ce paysage qui nous entoure en se demandant "est-ce que je suis vraiment le seul à ressentir ça maintenant".
-            </div>
+            <div class="section-desc-central">Pomme est une petite rubrique où vous trouverez des photos simples qui mettent en évidence les différents sentiments que des lieux, des objets ou des modèles procurent. J'ai appelé ça "Pomme" car elle représente une controverse et que c'est ce qui nous tombe dessus si on reste planté tel un pommier pour admirer ce paysage qui nous entoure en se demandant "est-ce que je suis vraiment le seul à ressentir ça maintenant". Pomme, c'est avant tout des marqueurs temporels qui ne visent aucune complexité.</div>
             <div class="grid" id="grid-pomme"></div>
         </div>
     </main>
@@ -172,34 +150,31 @@
                 const res = await fetch('images.json');
                 data = await res.json();
                 render();
-            } catch (e) { console.error("Erreur JSON"); }
+            } catch (e) { console.error("Error loading JSON"); }
         }
 
         function render() {
             const config = [
                 { id: 'grid-journal', filter: 'Journal', wait: "Le journal se remplit doucement." },
-                { id: 'grid-viewon', filter: 'View On', wait: "À la recherche de nouveaux messages." },
-                { id: 'grid-eponyme', filter: 'Eponyme', wait: "Les montages sont en cours." },
-                { id: 'grid-pomme', filter: 'Pomme', wait: "En attendant que la pomme tombe." }
+                { id: 'grid-viewon', filter: 'View On', wait: "Ici, on attend les modèles qui n'en sont pas. Bientôt disponible." },
+                { id: 'grid-eponyme', filter: 'Eponyme', wait: "Les interviews sont en cours de montage. Restez connectés." },
+                { id: 'grid-pomme', filter: 'Pomme', wait: "En attendant que la pomme tombe, admirez le paysage." }
             ];
 
             config.forEach(s => {
                 const container = document.getElementById(s.id);
                 const items = data.filter(i => i.rubrique === s.filter);
-                
                 if (items.length === 0) {
                     container.innerHTML = `<div class="wait-msg">${s.wait} ⏳</div>`;
                 } else {
                     container.innerHTML = items.map(p => `
                         <div class="item-card" onclick="openV(event, '${p.url}')">
                             <div class="media-holder">
-                                ${p.url.endsWith('.mp4') ? 
-                                    `<video src="${p.url}" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>` : 
-                                    `<img src="${p.url}" loading="lazy">`}
+                                ${p.url.endsWith('.mp4') ? `<video src="${p.url}" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>` : `<img src="${p.url}" loading="lazy">`}
                             </div>
                             <div class="meta">
                                 <h3>${p.titre}</h3>
-                                <div>${p.lieu} — ${p.iso} — ${p.focale}</div>
+                                <div>${p.lieu} — ${p.iso}</div>
                             </div>
                         </div>
                     `).join('');
@@ -210,19 +185,16 @@
         function openV(e, url) {
             e.stopPropagation();
             const v = document.getElementById('viewer');
-            const c = document.getElementById('v-container');
             v.style.display = 'flex';
-            c.innerHTML = url.endsWith('.mp4') ? 
-                `<video id="v-media" src="${url}" controls autoplay></video>` : 
-                `<img id="v-media" src="${url}">`;
+            document.getElementById('v-container').innerHTML = url.endsWith('.mp4') ? `<video id="v-media" src="${url}" controls autoplay></video>` : `<img id="v-media" src="${url}">`;
         }
 
         window.onscroll = () => {
             document.querySelectorAll('.section-anchor').forEach(s => {
                 if (window.pageYOffset >= s.offsetTop - 350) {
                     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                    const activeLink = document.querySelector(`.nav-link[href="#${s.id}"]`);
-                    if(activeLink) activeLink.classList.add('active');
+                    const link = document.querySelector(`.nav-link[href="#${s.id}"]`);
+                    if(link) link.classList.add('active');
                 }
             });
         };
